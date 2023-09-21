@@ -1,0 +1,45 @@
+syntax = "proto3";
+package sft.datamarket.v1;
+
+option go_package = "github.com/CosmosContracts/juno/x/datamarket/types";
+
+service Query {
+  rpc TotalDataAmount(QueryTotalDataAmountRequest) returns (QueryTotalDataAmountResponse);
+  rpc ClassShares(QueryClassSharesRequest) returns (QueryClassSharesResponse);
+  rpc DataFromBuyer(QueryDataFromBuyerRequest) returns (QueryDataFromBuyerResponse);
+}
+
+message QueryTotalDataAmountRequest {
+  optional string class = 1;
+}
+
+message QueryTotalDataAmountResponse {
+  uint64 total_amount = 1;
+}
+
+message QueryClassSharesRequest {
+  string class = 1;
+}
+
+message QueryClassSharesResponse {
+  repeated Share shares = 1;
+}
+
+message QueryDataFromBuyerRequest {
+  string buyer = 1;
+}
+
+message QueryDataFromBuyerResponse {
+  repeated Data data = 1;
+}
+
+message Data {
+  string class = 1;
+  string url = 2;
+}
+
+message Share {
+  string address = 1;
+  double proportion = 2;
+}
+
