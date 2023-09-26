@@ -14,9 +14,13 @@ func NewMsgServerImpl(keeper Keeper) types.MsgServer {
 }
 
 func (server msgServer) UploadData(goCtx context.Context, msg *types.MsgUploadData) (*types.MsgUploadDataResponse, error) {
-	
+
 }
 
 func (server msgServer) BuyData(goCtx context.Context, msg *types.MsgBuyData) (*types.MsgBuyDataResponse, error) {
+
+}
+
+func (server msgServer) UpdateParams(goCtx context.Context, msg *types.MsgUpdateParams) (*types.MsgUpdateParamsResponse, error) {
 
 }

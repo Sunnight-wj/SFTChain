@@ -26,14 +26,16 @@ type (
 func NewKeeper(
 	cdc codec.BinaryCodec,
 	storeKey storetypes.StoreKey,
+	accountKeeper types.AccountKeeper,
 	bankKeeper types.BankKeeper,
 	authority string,
 ) Keeper {
 	return Keeper{
-		cdc:        cdc,
-		storeKey:   storeKey,
-		bankKeeper: bankKeeper,
-		authority:  authority,
+		cdc:           cdc,
+		storeKey:      storeKey,
+		accountKeeper: accountKeeper,
+		bankKeeper:    bankKeeper,
+		authority:     authority,
 	}
 }
 
@@ -50,12 +52,12 @@ func (k Keeper) CreateModuleAccount(ctx sdk.Context) {
 	k.accountKeeper.SetModuleAccount(ctx, moduleAcc)
 }
 
-func (k Keeper) GetClassPrefixStore(ctx sdk.Context, class string) sdk.KVStore {
+func (k Keeper) GetDataSetPrefixStore(ctx sdk.Context, class string) sdk.KVStore {
 	store := ctx.KVStore(k.storeKey)
-	return prefix.NewStore(store, types.GetClassPrefix(class))
+	return prefix.NewStore(store, types.GetDataSetPrefix(class))
 }
 
-func (k Keeper) GetClassesPrefixStore(ctx sdk.Context) sdk.KVStore {
+func (k Keeper) GetBuyerPrefixStore(ctx sdk.Context, buyer string) sdk.KVStore {
 	store := ctx.KVStore(k.storeKey)
-	return prefix.NewStore(store, types.GetClassesPrefix())
+	return prefix.NewStore(store, types.GetBuyerPrefix(buyer))
 }

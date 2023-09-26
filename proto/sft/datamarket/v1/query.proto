@@ -3,6 +3,7 @@ package sft.datamarket.v1;
 
 import "google/api/annotations.proto";
 import "sft/datamarket/v1/genesis.proto";
+import "sft/datamarket/v1/data.proto";
 
 option go_package = "github.com/CosmosContracts/juno/x/datamarket/types";
 
@@ -26,7 +27,7 @@ message QueryDataRequest {
 }
 
 message QueryDataResponse {
-  repeated string urls = 1;
+  DataSet dataSet = 1;
 }
 
 message QueryShareRequest {
@@ -35,7 +36,7 @@ message QueryShareRequest {
 }
 
 message QueryShareResponse {
-  repeated double share = 1;
+  double share = 1;
 }
 
 message QueryDataSetFromBuyerRequest {
@@ -43,7 +44,7 @@ message QueryDataSetFromBuyerRequest {
 }
 
 message QueryDataSetFromBuyerResponse {
-  repeated string classes = 1;
+  Classes classes = 1;
 }
 
 message QueryParamsRequest {}

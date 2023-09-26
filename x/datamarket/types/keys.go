@@ -10,16 +10,12 @@ const (
 const KeySeparator = "|"
 
 var (
-	ClassPrefix = "class"
-	BuyerPrefix = "buyer"
+	DataSetPrefix = "dataset"
+	BuyerPrefix   = "buyer"
 )
 
-func GetClassPrefix(class string) []byte {
-	return []byte(strings.Join([]string{ClassPrefix, class, ""}, KeySeparator))
-}
-
-func GetClassesPrefix() []byte {
-	return []byte(strings.Join([]string{ClassPrefix, ""}, KeySeparator))
+func GetDataSetPrefix(class string) []byte {
+	return []byte(strings.Join([]string{DataSetPrefix, class, ""}, KeySeparator))
 }
 
 func GetBuyerPrefix(buyer string) []byte {

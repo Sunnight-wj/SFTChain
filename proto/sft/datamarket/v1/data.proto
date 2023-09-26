@@ -1,0 +1,12 @@
+syntax = "proto3";
+package sft.datamarket.v1;
+
+option go_package = "github.com/CosmosContracts/juno/x/datamarket/types";
+
+message DataSet {
+  repeated string urls = 1;
+}
+
+message Classes {
+  repeated string classes = 1;
+}
