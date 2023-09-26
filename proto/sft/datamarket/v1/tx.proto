@@ -3,24 +3,33 @@ package sft.datamarket.v1;
 
 option go_package = "github.com/CosmosContracts/juno/x/datamarket/types";
 
+import "sft/datamarket/v1/genesis.proto";
+
 service Msg {
   rpc UploadData(MsgUploadData) returns (MsgUploadDataResponse);
   rpc BuyData(MsgBuyData) returns (MsgBuyDataResponse);
+  rpc UpdateParams(MsgUpdateParams) returns (MsgUpdateParamsResponse);
 }
 
 message MsgUploadData {
-  string sender = 1;
-  string url = 2;
-  string class = 3;
+  string uploader = 1;
+  string class = 2;
+  string url = 3;
 }
 
 message MsgUploadDataResponse{}
 
 message MsgBuyData {
-  string sender = 1;
+  string buyer = 1;
   string class = 2;
 }
 
-message MsgBuyDataResponse{
+message MsgBuyDataResponse {
   repeated string urls = 1;
 }
+
+message MsgUpdateParams {
+  Params params = 1;
+}
+
+message MsgUpdateParamsResponse{}

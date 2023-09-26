@@ -2,52 +2,53 @@ syntax = "proto3";
 package sft.datamarket.v1;
 
 import "google/api/annotations.proto";
+import "sft/datamarket/v1/genesis.proto";
 
 option go_package = "github.com/CosmosContracts/juno/x/datamarket/types";
 
 service Query {
-  rpc TotalDataAmount(QueryTotalDataAmountRequest) returns (QueryTotalDataAmountResponse) {
-    option (google.api.http).get = "/sft/datamarket/v1/total_data_amount";
+  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+    option (google.api.http).get = "/sft/datamarket/v1/params";
   }
-  rpc ClassShares(QueryClassSharesRequest) returns (QueryClassSharesResponse) {
-    option (google.api.http).get = "/sft/datamarket/v1/class_shares";
+  rpc Data(QueryDataRequest) returns (QueryDataResponse) {
+    option (google.api.http).get = "/sft/datamarket/v1/data";
   }
-  rpc DataFromBuyer(QueryDataFromBuyerRequest) returns (QueryDataFromBuyerResponse) {
-    option (google.api.http).get = "/sft/datamarket/v1/data_from_buyer";
+  rpc Share(QueryShareRequest) returns (QueryShareResponse) {
+    option (google.api.http).get = "/sft/datamarket/v1/share";
+  }
+  rpc DataSetFromBuyer(QueryDataSetFromBuyerRequest) returns (QueryDataSetFromBuyerResponse) {
+    option (google.api.http).get = "/sft/datamarket/v1/data_set_from_buyer";
   }
 }
 
-message QueryTotalDataAmountRequest {
+message QueryDataRequest {
   string class = 1;
 }
 
-message QueryTotalDataAmountResponse {
-  uint64 total_amount = 1;
+message QueryDataResponse {
+  repeated string urls = 1;
 }
 
-message QueryClassSharesRequest {
-  string class = 1;
+message QueryShareRequest {
+  string uploader = 1;
+  string class = 2;
 }
 
-message QueryClassSharesResponse {
-  repeated Share shares = 1;
+message QueryShareResponse {
+  repeated double share = 1;
 }
 
-message QueryDataFromBuyerRequest {
+message QueryDataSetFromBuyerRequest {
   string buyer = 1;
 }
 
-message QueryDataFromBuyerResponse {
-  repeated Data data = 1;
+message QueryDataSetFromBuyerResponse {
+  repeated string classes = 1;
 }
 
-message Data {
-  string class = 1;
-  string url = 2;
-}
+message QueryParamsRequest {}
 
-message Share {
-  string address = 1;
-  double proportion = 2;
+message QueryParamsResponse {
+  Params params = 1;
 }
 
