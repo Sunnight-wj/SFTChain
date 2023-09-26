@@ -29,22 +29,22 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
-type QueryTotalDataAmountRequest struct {
+type QueryDataRequest struct {
 	Class string `protobuf:"bytes,1,opt,name=class,proto3" json:"class,omitempty"`
 }
 
-func (m *QueryTotalDataAmountRequest) Reset()         { *m = QueryTotalDataAmountRequest{} }
-func (m *QueryTotalDataAmountRequest) String() string { return proto.CompactTextString(m) }
-func (*QueryTotalDataAmountRequest) ProtoMessage()    {}
-func (*QueryTotalDataAmountRequest) Descriptor() ([]byte, []int) {
+func (m *QueryDataRequest) Reset()         { *m = QueryDataRequest{} }
+func (m *QueryDataRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryDataRequest) ProtoMessage()    {}
+func (*QueryDataRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0fb42028e9fa5884, []int{0}
 }
-func (m *QueryTotalDataAmountRequest) XXX_Unmarshal(b []byte) error {
+func (m *QueryDataRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryTotalDataAmountRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryDataRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryTotalDataAmountRequest.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryDataRequest.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -54,41 +54,41 @@ func (m *QueryTotalDataAmountRequest) XXX_Marshal(b []byte, deterministic bool) 
 		return b[:n], nil
 	}
 }
-func (m *QueryTotalDataAmountRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryTotalDataAmountRequest.Merge(m, src)
+func (m *QueryDataRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryDataRequest.Merge(m, src)
 }
-func (m *QueryTotalDataAmountRequest) XXX_Size() int {
+func (m *QueryDataRequest) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryTotalDataAmountRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryTotalDataAmountRequest.DiscardUnknown(m)
+func (m *QueryDataRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryDataRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryTotalDataAmountRequest proto.InternalMessageInfo
+var xxx_messageInfo_QueryDataRequest proto.InternalMessageInfo
 
-func (m *QueryTotalDataAmountRequest) GetClass() string {
+func (m *QueryDataRequest) GetClass() string {
 	if m != nil {
 		return m.Class
 	}
 	return ""
 }
 
-type QueryTotalDataAmountResponse struct {
-	TotalAmount uint64 `protobuf:"varint,1,opt,name=total_amount,json=totalAmount,proto3" json:"total_amount,omitempty"`
+type QueryDataResponse struct {
+	Urls []string `protobuf:"bytes,1,rep,name=urls,proto3" json:"urls,omitempty"`
 }
 
-func (m *QueryTotalDataAmountResponse) Reset()         { *m = QueryTotalDataAmountResponse{} }
-func (m *QueryTotalDataAmountResponse) String() string { return proto.CompactTextString(m) }
-func (*QueryTotalDataAmountResponse) ProtoMessage()    {}
-func (*QueryTotalDataAmountResponse) Descriptor() ([]byte, []int) {
+func (m *QueryDataResponse) Reset()         { *m = QueryDataResponse{} }
+func (m *QueryDataResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryDataResponse) ProtoMessage()    {}
+func (*QueryDataResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0fb42028e9fa5884, []int{1}
 }
-func (m *QueryTotalDataAmountResponse) XXX_Unmarshal(b []byte) error {
+func (m *QueryDataResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryTotalDataAmountResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryDataResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryTotalDataAmountResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryDataResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -98,129 +98,42 @@ func (m *QueryTotalDataAmountResponse) XXX_Marshal(b []byte, deterministic bool)
 		return b[:n], nil
 	}
 }
-func (m *QueryTotalDataAmountResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryTotalDataAmountResponse.Merge(m, src)
+func (m *QueryDataResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryDataResponse.Merge(m, src)
 }
-func (m *QueryTotalDataAmountResponse) XXX_Size() int {
+func (m *QueryDataResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryTotalDataAmountResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryTotalDataAmountResponse.DiscardUnknown(m)
+func (m *QueryDataResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryDataResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryTotalDataAmountResponse proto.InternalMessageInfo
+var xxx_messageInfo_QueryDataResponse proto.InternalMessageInfo
 
-func (m *QueryTotalDataAmountResponse) GetTotalAmount() uint64 {
+func (m *QueryDataResponse) GetUrls() []string {
 	if m != nil {
-		return m.TotalAmount
-	}
-	return 0
-}
-
-type QueryClassSharesRequest struct {
-	Class string `protobuf:"bytes,1,opt,name=class,proto3" json:"class,omitempty"`
-}
-
-func (m *QueryClassSharesRequest) Reset()         { *m = QueryClassSharesRequest{} }
-func (m *QueryClassSharesRequest) String() string { return proto.CompactTextString(m) }
-func (*QueryClassSharesRequest) ProtoMessage()    {}
-func (*QueryClassSharesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0fb42028e9fa5884, []int{2}
-}
-func (m *QueryClassSharesRequest) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *QueryClassSharesRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_QueryClassSharesRequest.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *QueryClassSharesRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryClassSharesRequest.Merge(m, src)
-}
-func (m *QueryClassSharesRequest) XXX_Size() int {
-	return m.Size()
-}
-func (m *QueryClassSharesRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryClassSharesRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_QueryClassSharesRequest proto.InternalMessageInfo
-
-func (m *QueryClassSharesRequest) GetClass() string {
-	if m != nil {
-		return m.Class
-	}
-	return ""
-}
-
-type QueryClassSharesResponse struct {
-	Shares []*Share `protobuf:"bytes,1,rep,name=shares,proto3" json:"shares,omitempty"`
-}
-
-func (m *QueryClassSharesResponse) Reset()         { *m = QueryClassSharesResponse{} }
-func (m *QueryClassSharesResponse) String() string { return proto.CompactTextString(m) }
-func (*QueryClassSharesResponse) ProtoMessage()    {}
-func (*QueryClassSharesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0fb42028e9fa5884, []int{3}
-}
-func (m *QueryClassSharesResponse) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *QueryClassSharesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_QueryClassSharesResponse.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *QueryClassSharesResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryClassSharesResponse.Merge(m, src)
-}
-func (m *QueryClassSharesResponse) XXX_Size() int {
-	return m.Size()
-}
-func (m *QueryClassSharesResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryClassSharesResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_QueryClassSharesResponse proto.InternalMessageInfo
-
-func (m *QueryClassSharesResponse) GetShares() []*Share {
-	if m != nil {
-		return m.Shares
+		return m.Urls
 	}
 	return nil
 }
 
-type QueryDataFromBuyerRequest struct {
-	Buyer string `protobuf:"bytes,1,opt,name=buyer,proto3" json:"buyer,omitempty"`
+type QueryShareRequest struct {
+	Uploader string `protobuf:"bytes,1,opt,name=uploader,proto3" json:"uploader,omitempty"`
+	Class    string `protobuf:"bytes,2,opt,name=class,proto3" json:"class,omitempty"`
 }
 
-func (m *QueryDataFromBuyerRequest) Reset()         { *m = QueryDataFromBuyerRequest{} }
-func (m *QueryDataFromBuyerRequest) String() string { return proto.CompactTextString(m) }
-func (*QueryDataFromBuyerRequest) ProtoMessage()    {}
-func (*QueryDataFromBuyerRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0fb42028e9fa5884, []int{4}
+func (m *QueryShareRequest) Reset()         { *m = QueryShareRequest{} }
+func (m *QueryShareRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryShareRequest) ProtoMessage()    {}
+func (*QueryShareRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_0fb42028e9fa5884, []int{2}
 }
-func (m *QueryDataFromBuyerRequest) XXX_Unmarshal(b []byte) error {
+func (m *QueryShareRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryDataFromBuyerRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryShareRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryDataFromBuyerRequest.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryShareRequest.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -230,41 +143,136 @@ func (m *QueryDataFromBuyerRequest) XXX_Marshal(b []byte, deterministic bool) ([
 		return b[:n], nil
 	}
 }
-func (m *QueryDataFromBuyerRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryDataFromBuyerRequest.Merge(m, src)
+func (m *QueryShareRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryShareRequest.Merge(m, src)
 }
-func (m *QueryDataFromBuyerRequest) XXX_Size() int {
+func (m *QueryShareRequest) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryDataFromBuyerRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryDataFromBuyerRequest.DiscardUnknown(m)
+func (m *QueryShareRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryShareRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryDataFromBuyerRequest proto.InternalMessageInfo
+var xxx_messageInfo_QueryShareRequest proto.InternalMessageInfo
 
-func (m *QueryDataFromBuyerRequest) GetBuyer() string {
+func (m *QueryShareRequest) GetUploader() string {
+	if m != nil {
+		return m.Uploader
+	}
+	return ""
+}
+
+func (m *QueryShareRequest) GetClass() string {
+	if m != nil {
+		return m.Class
+	}
+	return ""
+}
+
+type QueryShareResponse struct {
+	Share []float64 `protobuf:"fixed64,1,rep,packed,name=share,proto3" json:"share,omitempty"`
+}
+
+func (m *QueryShareResponse) Reset()         { *m = QueryShareResponse{} }
+func (m *QueryShareResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryShareResponse) ProtoMessage()    {}
+func (*QueryShareResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_0fb42028e9fa5884, []int{3}
+}
+func (m *QueryShareResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryShareResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryShareResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryShareResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryShareResponse.Merge(m, src)
+}
+func (m *QueryShareResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryShareResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryShareResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryShareResponse proto.InternalMessageInfo
+
+func (m *QueryShareResponse) GetShare() []float64 {
+	if m != nil {
+		return m.Share
+	}
+	return nil
+}
+
+type QueryDataSetFromBuyerRequest struct {
+	Buyer string `protobuf:"bytes,1,opt,name=buyer,proto3" json:"buyer,omitempty"`
+}
+
+func (m *QueryDataSetFromBuyerRequest) Reset()         { *m = QueryDataSetFromBuyerRequest{} }
+func (m *QueryDataSetFromBuyerRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryDataSetFromBuyerRequest) ProtoMessage()    {}
+func (*QueryDataSetFromBuyerRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_0fb42028e9fa5884, []int{4}
+}
+func (m *QueryDataSetFromBuyerRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryDataSetFromBuyerRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryDataSetFromBuyerRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryDataSetFromBuyerRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryDataSetFromBuyerRequest.Merge(m, src)
+}
+func (m *QueryDataSetFromBuyerRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryDataSetFromBuyerRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryDataSetFromBuyerRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryDataSetFromBuyerRequest proto.InternalMessageInfo
+
+func (m *QueryDataSetFromBuyerRequest) GetBuyer() string {
 	if m != nil {
 		return m.Buyer
 	}
 	return ""
 }
 
-type QueryDataFromBuyerResponse struct {
-	Data []*Data `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
+type QueryDataSetFromBuyerResponse struct {
+	Classes []string `protobuf:"bytes,1,rep,name=classes,proto3" json:"classes,omitempty"`
 }
 
-func (m *QueryDataFromBuyerResponse) Reset()         { *m = QueryDataFromBuyerResponse{} }
-func (m *QueryDataFromBuyerResponse) String() string { return proto.CompactTextString(m) }
-func (*QueryDataFromBuyerResponse) ProtoMessage()    {}
-func (*QueryDataFromBuyerResponse) Descriptor() ([]byte, []int) {
+func (m *QueryDataSetFromBuyerResponse) Reset()         { *m = QueryDataSetFromBuyerResponse{} }
+func (m *QueryDataSetFromBuyerResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryDataSetFromBuyerResponse) ProtoMessage()    {}
+func (*QueryDataSetFromBuyerResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0fb42028e9fa5884, []int{5}
 }
-func (m *QueryDataFromBuyerResponse) XXX_Unmarshal(b []byte) error {
+func (m *QueryDataSetFromBuyerResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryDataFromBuyerResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryDataSetFromBuyerResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryDataFromBuyerResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryDataSetFromBuyerResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -274,42 +282,40 @@ func (m *QueryDataFromBuyerResponse) XXX_Marshal(b []byte, deterministic bool) (
 		return b[:n], nil
 	}
 }
-func (m *QueryDataFromBuyerResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryDataFromBuyerResponse.Merge(m, src)
+func (m *QueryDataSetFromBuyerResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryDataSetFromBuyerResponse.Merge(m, src)
 }
-func (m *QueryDataFromBuyerResponse) XXX_Size() int {
+func (m *QueryDataSetFromBuyerResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryDataFromBuyerResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryDataFromBuyerResponse.DiscardUnknown(m)
+func (m *QueryDataSetFromBuyerResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryDataSetFromBuyerResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryDataFromBuyerResponse proto.InternalMessageInfo
+var xxx_messageInfo_QueryDataSetFromBuyerResponse proto.InternalMessageInfo
 
-func (m *QueryDataFromBuyerResponse) GetData() []*Data {
+func (m *QueryDataSetFromBuyerResponse) GetClasses() []string {
 	if m != nil {
-		return m.Data
+		return m.Classes
 	}
 	return nil
 }
 
-type Data struct {
-	Class string `protobuf:"bytes,1,opt,name=class,proto3" json:"class,omitempty"`
-	Url   string `protobuf:"bytes,2,opt,name=url,proto3" json:"url,omitempty"`
+type QueryParamsRequest struct {
 }
 
-func (m *Data) Reset()         { *m = Data{} }
-func (m *Data) String() string { return proto.CompactTextString(m) }
-func (*Data) ProtoMessage()    {}
-func (*Data) Descriptor() ([]byte, []int) {
+func (m *QueryParamsRequest) Reset()         { *m = QueryParamsRequest{} }
+func (m *QueryParamsRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryParamsRequest) ProtoMessage()    {}
+func (*QueryParamsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0fb42028e9fa5884, []int{6}
 }
-func (m *Data) XXX_Unmarshal(b []byte) error {
+func (m *QueryParamsRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *Data) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryParamsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_Data.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryParamsRequest.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -319,49 +325,34 @@ func (m *Data) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return b[:n], nil
 	}
 }
-func (m *Data) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Data.Merge(m, src)
+func (m *QueryParamsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryParamsRequest.Merge(m, src)
 }
-func (m *Data) XXX_Size() int {
+func (m *QueryParamsRequest) XXX_Size() int {
 	return m.Size()
 }
-func (m *Data) XXX_DiscardUnknown() {
-	xxx_messageInfo_Data.DiscardUnknown(m)
+func (m *QueryParamsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryParamsRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_Data proto.InternalMessageInfo
+var xxx_messageInfo_QueryParamsRequest proto.InternalMessageInfo
 
-func (m *Data) GetClass() string {
-	if m != nil {
-		return m.Class
-	}
-	return ""
+type QueryParamsResponse struct {
+	Params *Params `protobuf:"bytes,1,opt,name=params,proto3" json:"params,omitempty"`
 }
 
-func (m *Data) GetUrl() string {
-	if m != nil {
-		return m.Url
-	}
-	return ""
-}
-
-type Share struct {
-	Address    string  `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
-	Proportion float64 `protobuf:"fixed64,2,opt,name=proportion,proto3" json:"proportion,omitempty"`
-}
-
-func (m *Share) Reset()         { *m = Share{} }
-func (m *Share) String() string { return proto.CompactTextString(m) }
-func (*Share) ProtoMessage()    {}
-func (*Share) Descriptor() ([]byte, []int) {
+func (m *QueryParamsResponse) Reset()         { *m = QueryParamsResponse{} }
+func (m *QueryParamsResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryParamsResponse) ProtoMessage()    {}
+func (*QueryParamsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0fb42028e9fa5884, []int{7}
 }
-func (m *Share) XXX_Unmarshal(b []byte) error {
+func (m *QueryParamsResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *Share) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryParamsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_Share.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryParamsResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -371,79 +362,72 @@ func (m *Share) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return b[:n], nil
 	}
 }
-func (m *Share) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Share.Merge(m, src)
+func (m *QueryParamsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryParamsResponse.Merge(m, src)
 }
-func (m *Share) XXX_Size() int {
+func (m *QueryParamsResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *Share) XXX_DiscardUnknown() {
-	xxx_messageInfo_Share.DiscardUnknown(m)
+func (m *QueryParamsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryParamsResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_Share proto.InternalMessageInfo
+var xxx_messageInfo_QueryParamsResponse proto.InternalMessageInfo
 
-func (m *Share) GetAddress() string {
+func (m *QueryParamsResponse) GetParams() *Params {
 	if m != nil {
-		return m.Address
+		return m.Params
 	}
-	return ""
-}
-
-func (m *Share) GetProportion() float64 {
-	if m != nil {
-		return m.Proportion
-	}
-	return 0
+	return nil
 }
 
 func init() {
-	proto.RegisterType((*QueryTotalDataAmountRequest)(nil), "sft.datamarket.v1.QueryTotalDataAmountRequest")
-	proto.RegisterType((*QueryTotalDataAmountResponse)(nil), "sft.datamarket.v1.QueryTotalDataAmountResponse")
-	proto.RegisterType((*QueryClassSharesRequest)(nil), "sft.datamarket.v1.QueryClassSharesRequest")
-	proto.RegisterType((*QueryClassSharesResponse)(nil), "sft.datamarket.v1.QueryClassSharesResponse")
-	proto.RegisterType((*QueryDataFromBuyerRequest)(nil), "sft.datamarket.v1.QueryDataFromBuyerRequest")
-	proto.RegisterType((*QueryDataFromBuyerResponse)(nil), "sft.datamarket.v1.QueryDataFromBuyerResponse")
-	proto.RegisterType((*Data)(nil), "sft.datamarket.v1.Data")
-	proto.RegisterType((*Share)(nil), "sft.datamarket.v1.Share")
+	proto.RegisterType((*QueryDataRequest)(nil), "sft.datamarket.v1.QueryDataRequest")
+	proto.RegisterType((*QueryDataResponse)(nil), "sft.datamarket.v1.QueryDataResponse")
+	proto.RegisterType((*QueryShareRequest)(nil), "sft.datamarket.v1.QueryShareRequest")
+	proto.RegisterType((*QueryShareResponse)(nil), "sft.datamarket.v1.QueryShareResponse")
+	proto.RegisterType((*QueryDataSetFromBuyerRequest)(nil), "sft.datamarket.v1.QueryDataSetFromBuyerRequest")
+	proto.RegisterType((*QueryDataSetFromBuyerResponse)(nil), "sft.datamarket.v1.QueryDataSetFromBuyerResponse")
+	proto.RegisterType((*QueryParamsRequest)(nil), "sft.datamarket.v1.QueryParamsRequest")
+	proto.RegisterType((*QueryParamsResponse)(nil), "sft.datamarket.v1.QueryParamsResponse")
 }
 
 func init() { proto.RegisterFile("sft/datamarket/v1/query.proto", fileDescriptor_0fb42028e9fa5884) }
 
 var fileDescriptor_0fb42028e9fa5884 = []byte{
-	// 505 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x94, 0xc1, 0x6e, 0xd3, 0x4c,
-	0x10, 0xc7, 0xb3, 0x4d, 0xd2, 0x4f, 0xdf, 0x04, 0x04, 0xac, 0x90, 0x6a, 0x4c, 0x31, 0xed, 0xaa,
-	0x82, 0xaa, 0x2d, 0x5e, 0x92, 0x3e, 0x41, 0x1a, 0x84, 0x84, 0xd4, 0x0b, 0x86, 0x13, 0x97, 0x68,
-	0x93, 0x6c, 0xd2, 0x40, 0xec, 0x75, 0x77, 0xd7, 0x15, 0xb9, 0xf2, 0x02, 0x20, 0x71, 0xe1, 0xc8,
-	0xe3, 0x70, 0xac, 0xc4, 0x01, 0x8e, 0x28, 0xe1, 0x41, 0xd0, 0x8e, 0x5d, 0x08, 0xc4, 0xad, 0x72,
-	0xcb, 0xcc, 0xce, 0x7f, 0xe6, 0x97, 0x99, 0xbf, 0x0c, 0xf7, 0xcc, 0xd0, 0xf2, 0x81, 0xb0, 0x22,
-	0x16, 0xfa, 0x8d, 0xb4, 0xfc, 0xac, 0xc9, 0x4f, 0x33, 0xa9, 0xa7, 0x61, 0xaa, 0x95, 0x55, 0xf4,
-	0x96, 0x19, 0xda, 0xf0, 0xcf, 0x73, 0x78, 0xd6, 0xf4, 0x37, 0x47, 0x4a, 0x8d, 0x26, 0x92, 0x8b,
-	0x74, 0xcc, 0x45, 0x92, 0x28, 0x2b, 0xec, 0x58, 0x25, 0x26, 0x17, 0xb0, 0x43, 0xb8, 0xfb, 0xdc,
-	0xe9, 0x5f, 0x2a, 0x2b, 0x26, 0x4f, 0x84, 0x15, 0xed, 0x58, 0x65, 0x89, 0x8d, 0xe4, 0x69, 0x26,
-	0x8d, 0xa5, 0xb7, 0xa1, 0xde, 0x9f, 0x08, 0x63, 0x3c, 0xb2, 0x45, 0x76, 0xff, 0x8f, 0xf2, 0x80,
-	0xb5, 0x61, 0xb3, 0x5c, 0x64, 0x52, 0x95, 0x18, 0x49, 0xb7, 0xe1, 0x9a, 0x75, 0x4f, 0x5d, 0x81,
-	0x79, 0x14, 0xd7, 0xa2, 0x06, 0xe6, 0xf2, 0x52, 0xc6, 0x61, 0x03, 0x5b, 0x74, 0x5c, 0xc3, 0x17,
-	0x27, 0x42, 0x4b, 0x73, 0xf5, 0xcc, 0x63, 0xf0, 0x96, 0x05, 0xc5, 0xbc, 0xc7, 0xb0, 0x6e, 0x30,
-	0xe3, 0x91, 0xad, 0xea, 0x6e, 0xa3, 0xe5, 0x85, 0x4b, 0x6b, 0x08, 0x51, 0x12, 0x15, 0x75, 0xac,
-	0x09, 0x77, 0xb0, 0x9b, 0x83, 0x7f, 0xaa, 0x55, 0x7c, 0x94, 0x4d, 0xa5, 0x5e, 0x00, 0xe8, 0xb9,
-	0xf8, 0x02, 0x00, 0x03, 0xf6, 0x0c, 0xfc, 0x32, 0x49, 0x81, 0xb0, 0x0f, 0x35, 0x37, 0xaf, 0x00,
-	0xd8, 0x28, 0x01, 0x70, 0xba, 0x08, 0x8b, 0x58, 0x08, 0x35, 0x17, 0x95, 0xff, 0x53, 0x7a, 0x13,
-	0xaa, 0x99, 0x9e, 0x78, 0x6b, 0x98, 0x73, 0x3f, 0x59, 0x1b, 0xea, 0x88, 0x4f, 0x3d, 0xf8, 0x4f,
-	0x0c, 0x06, 0x5a, 0xfe, 0x96, 0x5c, 0x84, 0x34, 0x00, 0x48, 0xb5, 0x4a, 0x95, 0x76, 0xc7, 0x45,
-	0x2d, 0x89, 0x16, 0x32, 0xad, 0x6f, 0x55, 0xa8, 0x23, 0x3e, 0xfd, 0x4c, 0xe0, 0xc6, 0x3f, 0x87,
-	0xa3, 0x61, 0x09, 0xef, 0x15, 0xb6, 0xf0, 0xf9, 0xca, 0xf5, 0xf9, 0x7a, 0xd8, 0xc1, 0xbb, 0xaf,
-	0x3f, 0x3f, 0xae, 0x3d, 0xa0, 0x3b, 0x7c, 0xd9, 0xbf, 0xb9, 0x55, 0x5c, 0xae, 0xf0, 0x0b, 0x7d,
-	0x4f, 0xa0, 0xb1, 0x70, 0x67, 0xba, 0x77, 0xd9, 0xb8, 0x65, 0xf7, 0xf8, 0xfb, 0x2b, 0xd5, 0x16,
-	0x58, 0x0f, 0x11, 0x6b, 0x9b, 0xde, 0x2f, 0xc1, 0xc2, 0x63, 0x74, 0x73, 0xbf, 0xd0, 0x4f, 0x04,
-	0xae, 0xff, 0x75, 0x78, 0x7a, 0x70, 0xd9, 0x9c, 0x32, 0x4b, 0xf9, 0x8f, 0x56, 0xac, 0x2e, 0xb8,
-	0xf6, 0x90, 0x6b, 0x87, 0xb2, 0x12, 0x2e, 0x5c, 0xd4, 0x50, 0xab, 0xb8, 0x8b, 0xbe, 0x3c, 0x3a,
-	0xfe, 0x32, 0x0b, 0xc8, 0xf9, 0x2c, 0x20, 0x3f, 0x66, 0x01, 0xf9, 0x30, 0x0f, 0x2a, 0xe7, 0xf3,
-	0xa0, 0xf2, 0x7d, 0x1e, 0x54, 0x5e, 0xb5, 0x46, 0x63, 0x7b, 0x92, 0xf5, 0xc2, 0xbe, 0x8a, 0x79,
-	0x47, 0x99, 0x58, 0x99, 0x8e, 0x4a, 0xac, 0x16, 0x7d, 0x6b, 0xf8, 0xeb, 0x2c, 0x51, 0xfc, 0xed,
-	0x62, 0x6b, 0x3b, 0x4d, 0xa5, 0xe9, 0xad, 0xe3, 0x67, 0xe1, 0xf0, 0x57, 0x00, 0x00, 0x00, 0xff,
-	0xff, 0x2d, 0xf4, 0x55, 0xc7, 0x68, 0x04, 0x00, 0x00,
+	// 502 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x94, 0xb1, 0x72, 0xd3, 0x40,
+	0x10, 0x86, 0xad, 0x60, 0x1b, 0xb2, 0x34, 0xc9, 0xe2, 0x19, 0x6c, 0x91, 0x28, 0x41, 0x90, 0xe0,
+	0xa1, 0xd0, 0x61, 0x43, 0x43, 0x9b, 0x00, 0x43, 0x41, 0x01, 0x4e, 0x47, 0xe3, 0x39, 0x3b, 0x67,
+	0xc7, 0x60, 0xe9, 0x94, 0xdb, 0x93, 0x07, 0x53, 0xf2, 0x04, 0xcc, 0x50, 0xf0, 0x04, 0xbc, 0x0b,
+	0x65, 0x66, 0x68, 0x28, 0x19, 0x9b, 0x07, 0x61, 0x74, 0x3a, 0x27, 0x02, 0x5b, 0x09, 0x9d, 0xf7,
+	0xf4, 0xef, 0xff, 0xfd, 0x7b, 0xb7, 0x63, 0xd8, 0xa6, 0x81, 0x66, 0xc7, 0x5c, 0xf3, 0x90, 0xab,
+	0xf7, 0x42, 0xb3, 0x49, 0x8b, 0x9d, 0x26, 0x42, 0x4d, 0x83, 0x58, 0x49, 0x2d, 0x71, 0x93, 0x06,
+	0x3a, 0xb8, 0xf8, 0x1c, 0x4c, 0x5a, 0xee, 0xd6, 0x50, 0xca, 0xe1, 0x58, 0x30, 0x1e, 0x8f, 0x18,
+	0x8f, 0x22, 0xa9, 0xb9, 0x1e, 0xc9, 0x88, 0xb2, 0x06, 0x77, 0x67, 0xd9, 0x6f, 0x28, 0x22, 0x41,
+	0x23, 0x2b, 0xf0, 0x9b, 0xb0, 0xf1, 0x26, 0x05, 0x3c, 0xe3, 0x9a, 0x77, 0xc4, 0x69, 0x22, 0x48,
+	0x63, 0x0d, 0x2a, 0xfd, 0x31, 0x27, 0xaa, 0x3b, 0xbb, 0x4e, 0x73, 0xbd, 0x93, 0x15, 0xfe, 0x03,
+	0xd8, 0xcc, 0x29, 0x29, 0x96, 0x11, 0x09, 0x44, 0x28, 0x27, 0x6a, 0x9c, 0x2a, 0xaf, 0x35, 0xd7,
+	0x3b, 0xe6, 0xb7, 0xff, 0xdc, 0x0a, 0x8f, 0x4e, 0xb8, 0x12, 0x0b, 0x4f, 0x17, 0x6e, 0x24, 0xf1,
+	0x58, 0xf2, 0x63, 0xa1, 0xac, 0xed, 0x79, 0x7d, 0xc1, 0x5b, 0xcb, 0xf3, 0x1e, 0x02, 0xe6, 0x6d,
+	0x2c, 0xb0, 0x06, 0x15, 0x4a, 0x0f, 0x0c, 0xd1, 0xe9, 0x64, 0x85, 0xff, 0x04, 0xb6, 0xce, 0xb3,
+	0x1d, 0x09, 0xfd, 0x42, 0xc9, 0xf0, 0x20, 0x99, 0x0a, 0x95, 0x9b, 0xa8, 0x97, 0xd6, 0x8b, 0x89,
+	0x4c, 0xe1, 0x3f, 0x85, 0xed, 0x82, 0x2e, 0x0b, 0xab, 0xc3, 0x75, 0x93, 0x45, 0x2c, 0x06, 0x5c,
+	0x94, 0x7e, 0xcd, 0x86, 0x7b, 0xcd, 0x15, 0x0f, 0xc9, 0x62, 0xfc, 0x97, 0x70, 0xeb, 0xaf, 0x53,
+	0x6b, 0xd3, 0x82, 0x6a, 0x6c, 0x4e, 0x0c, 0xfe, 0x66, 0xbb, 0x11, 0x2c, 0x3d, 0x63, 0x60, 0x5b,
+	0xac, 0xb0, 0xfd, 0xb5, 0x0c, 0x15, 0x63, 0x85, 0x1f, 0xa1, 0x9a, 0x7d, 0xc3, 0xbd, 0x15, 0x6d,
+	0xcb, 0x21, 0xdc, 0xfd, 0xab, 0x64, 0x59, 0x2a, 0xff, 0xee, 0xa7, 0x1f, 0xbf, 0xbf, 0xac, 0xdd,
+	0xc1, 0x06, 0x5b, 0xde, 0x91, 0x2c, 0x05, 0x2a, 0x28, 0xa7, 0x77, 0x83, 0xf7, 0x8a, 0x2c, 0x73,
+	0x5b, 0xe3, 0xde, 0xbf, 0x5c, 0x64, 0xa9, 0x3b, 0x86, 0xda, 0xc0, 0xdb, 0x2b, 0xa8, 0x69, 0x85,
+	0x13, 0xa8, 0x98, 0x17, 0xc7, 0x42, 0xbf, 0xfc, 0x5e, 0xb9, 0x7b, 0x57, 0xa8, 0x2c, 0x76, 0xd7,
+	0x60, 0x5d, 0xac, 0xaf, 0xc0, 0x9a, 0x15, 0xc2, 0x6f, 0x0e, 0x6c, 0xfc, 0xbb, 0x08, 0xc8, 0x2e,
+	0x9b, 0x69, 0xc5, 0xa2, 0xb9, 0x8f, 0xfe, 0xbf, 0xc1, 0x26, 0x0b, 0x4c, 0xb2, 0x26, 0xee, 0x17,
+	0x5c, 0x48, 0x97, 0x84, 0xee, 0x0e, 0x94, 0x0c, 0xbb, 0x66, 0x69, 0x0f, 0x5e, 0x7d, 0x9f, 0x79,
+	0xce, 0xd9, 0xcc, 0x73, 0x7e, 0xcd, 0x3c, 0xe7, 0xf3, 0xdc, 0x2b, 0x9d, 0xcd, 0xbd, 0xd2, 0xcf,
+	0xb9, 0x57, 0x7a, 0xdb, 0x1e, 0x8e, 0xf4, 0x49, 0xd2, 0x0b, 0xfa, 0x32, 0x64, 0x87, 0x92, 0x42,
+	0x49, 0x87, 0x32, 0xd2, 0x8a, 0xf7, 0x35, 0xb1, 0x77, 0x49, 0x24, 0xd9, 0x87, 0xbc, 0xbd, 0x9e,
+	0xc6, 0x82, 0x7a, 0x55, 0xf3, 0x2f, 0xf0, 0xf8, 0x4f, 0x00, 0x00, 0x00, 0xff, 0xff, 0x9c, 0xc0,
+	0x45, 0x86, 0x78, 0x04, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -458,9 +442,10 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type QueryClient interface {
-	TotalDataAmount(ctx context.Context, in *QueryTotalDataAmountRequest, opts ...grpc.CallOption) (*QueryTotalDataAmountResponse, error)
-	ClassShares(ctx context.Context, in *QueryClassSharesRequest, opts ...grpc.CallOption) (*QueryClassSharesResponse, error)
-	DataFromBuyer(ctx context.Context, in *QueryDataFromBuyerRequest, opts ...grpc.CallOption) (*QueryDataFromBuyerResponse, error)
+	Params(ctx context.Context, in *QueryParamsRequest, opts ...grpc.CallOption) (*QueryParamsResponse, error)
+	Data(ctx context.Context, in *QueryDataRequest, opts ...grpc.CallOption) (*QueryDataResponse, error)
+	Share(ctx context.Context, in *QueryShareRequest, opts ...grpc.CallOption) (*QueryShareResponse, error)
+	DataSetFromBuyer(ctx context.Context, in *QueryDataSetFromBuyerRequest, opts ...grpc.CallOption) (*QueryDataSetFromBuyerResponse, error)
 }
 
 type queryClient struct {
@@ -471,27 +456,36 @@ func NewQueryClient(cc grpc1.ClientConn) QueryClient {
 	return &queryClient{cc}
 }
 
-func (c *queryClient) TotalDataAmount(ctx context.Context, in *QueryTotalDataAmountRequest, opts ...grpc.CallOption) (*QueryTotalDataAmountResponse, error) {
-	out := new(QueryTotalDataAmountResponse)
-	err := c.cc.Invoke(ctx, "/sft.datamarket.v1.Query/TotalDataAmount", in, out, opts...)
+func (c *queryClient) Params(ctx context.Context, in *QueryParamsRequest, opts ...grpc.CallOption) (*QueryParamsResponse, error) {
+	out := new(QueryParamsResponse)
+	err := c.cc.Invoke(ctx, "/sft.datamarket.v1.Query/Params", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *queryClient) ClassShares(ctx context.Context, in *QueryClassSharesRequest, opts ...grpc.CallOption) (*QueryClassSharesResponse, error) {
-	out := new(QueryClassSharesResponse)
-	err := c.cc.Invoke(ctx, "/sft.datamarket.v1.Query/ClassShares", in, out, opts...)
+func (c *queryClient) Data(ctx context.Context, in *QueryDataRequest, opts ...grpc.CallOption) (*QueryDataResponse, error) {
+	out := new(QueryDataResponse)
+	err := c.cc.Invoke(ctx, "/sft.datamarket.v1.Query/Data", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *queryClient) DataFromBuyer(ctx context.Context, in *QueryDataFromBuyerRequest, opts ...grpc.CallOption) (*QueryDataFromBuyerResponse, error) {
-	out := new(QueryDataFromBuyerResponse)
-	err := c.cc.Invoke(ctx, "/sft.datamarket.v1.Query/DataFromBuyer", in, out, opts...)
+func (c *queryClient) Share(ctx context.Context, in *QueryShareRequest, opts ...grpc.CallOption) (*QueryShareResponse, error) {
+	out := new(QueryShareResponse)
+	err := c.cc.Invoke(ctx, "/sft.datamarket.v1.Query/Share", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) DataSetFromBuyer(ctx context.Context, in *QueryDataSetFromBuyerRequest, opts ...grpc.CallOption) (*QueryDataSetFromBuyerResponse, error) {
+	out := new(QueryDataSetFromBuyerResponse)
+	err := c.cc.Invoke(ctx, "/sft.datamarket.v1.Query/DataSetFromBuyer", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -500,79 +494,101 @@ func (c *queryClient) DataFromBuyer(ctx context.Context, in *QueryDataFromBuyerR
 
 // QueryServer is the server API for Query service.
 type QueryServer interface {
-	TotalDataAmount(context.Context, *QueryTotalDataAmountRequest) (*QueryTotalDataAmountResponse, error)
-	ClassShares(context.Context, *QueryClassSharesRequest) (*QueryClassSharesResponse, error)
-	DataFromBuyer(context.Context, *QueryDataFromBuyerRequest) (*QueryDataFromBuyerResponse, error)
+	Params(context.Context, *QueryParamsRequest) (*QueryParamsResponse, error)
+	Data(context.Context, *QueryDataRequest) (*QueryDataResponse, error)
+	Share(context.Context, *QueryShareRequest) (*QueryShareResponse, error)
+	DataSetFromBuyer(context.Context, *QueryDataSetFromBuyerRequest) (*QueryDataSetFromBuyerResponse, error)
 }
 
 // UnimplementedQueryServer can be embedded to have forward compatible implementations.
 type UnimplementedQueryServer struct {
 }
 
-func (*UnimplementedQueryServer) TotalDataAmount(ctx context.Context, req *QueryTotalDataAmountRequest) (*QueryTotalDataAmountResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method TotalDataAmount not implemented")
+func (*UnimplementedQueryServer) Params(ctx context.Context, req *QueryParamsRequest) (*QueryParamsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Params not implemented")
 }
-func (*UnimplementedQueryServer) ClassShares(ctx context.Context, req *QueryClassSharesRequest) (*QueryClassSharesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ClassShares not implemented")
+func (*UnimplementedQueryServer) Data(ctx context.Context, req *QueryDataRequest) (*QueryDataResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Data not implemented")
 }
-func (*UnimplementedQueryServer) DataFromBuyer(ctx context.Context, req *QueryDataFromBuyerRequest) (*QueryDataFromBuyerResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DataFromBuyer not implemented")
+func (*UnimplementedQueryServer) Share(ctx context.Context, req *QueryShareRequest) (*QueryShareResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Share not implemented")
+}
+func (*UnimplementedQueryServer) DataSetFromBuyer(ctx context.Context, req *QueryDataSetFromBuyerRequest) (*QueryDataSetFromBuyerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DataSetFromBuyer not implemented")
 }
 
 func RegisterQueryServer(s grpc1.Server, srv QueryServer) {
 	s.RegisterService(&_Query_serviceDesc, srv)
 }
 
-func _Query_TotalDataAmount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryTotalDataAmountRequest)
+func _Query_Params_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryParamsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(QueryServer).TotalDataAmount(ctx, in)
+		return srv.(QueryServer).Params(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/sft.datamarket.v1.Query/TotalDataAmount",
+		FullMethod: "/sft.datamarket.v1.Query/Params",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).TotalDataAmount(ctx, req.(*QueryTotalDataAmountRequest))
+		return srv.(QueryServer).Params(ctx, req.(*QueryParamsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Query_ClassShares_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryClassSharesRequest)
+func _Query_Data_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryDataRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(QueryServer).ClassShares(ctx, in)
+		return srv.(QueryServer).Data(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/sft.datamarket.v1.Query/ClassShares",
+		FullMethod: "/sft.datamarket.v1.Query/Data",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).ClassShares(ctx, req.(*QueryClassSharesRequest))
+		return srv.(QueryServer).Data(ctx, req.(*QueryDataRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Query_DataFromBuyer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryDataFromBuyerRequest)
+func _Query_Share_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryShareRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(QueryServer).DataFromBuyer(ctx, in)
+		return srv.(QueryServer).Share(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/sft.datamarket.v1.Query/DataFromBuyer",
+		FullMethod: "/sft.datamarket.v1.Query/Share",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).DataFromBuyer(ctx, req.(*QueryDataFromBuyerRequest))
+		return srv.(QueryServer).Share(ctx, req.(*QueryShareRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_DataSetFromBuyer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryDataSetFromBuyerRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).DataSetFromBuyer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/sft.datamarket.v1.Query/DataSetFromBuyer",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).DataSetFromBuyer(ctx, req.(*QueryDataSetFromBuyerRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -582,23 +598,27 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*QueryServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "TotalDataAmount",
-			Handler:    _Query_TotalDataAmount_Handler,
+			MethodName: "Params",
+			Handler:    _Query_Params_Handler,
 		},
 		{
-			MethodName: "ClassShares",
-			Handler:    _Query_ClassShares_Handler,
+			MethodName: "Data",
+			Handler:    _Query_Data_Handler,
 		},
 		{
-			MethodName: "DataFromBuyer",
-			Handler:    _Query_DataFromBuyer_Handler,
+			MethodName: "Share",
+			Handler:    _Query_Share_Handler,
+		},
+		{
+			MethodName: "DataSetFromBuyer",
+			Handler:    _Query_DataSetFromBuyer_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "sft/datamarket/v1/query.proto",
 }
 
-func (m *QueryTotalDataAmountRequest) Marshal() (dAtA []byte, err error) {
+func (m *QueryDataRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -608,12 +628,12 @@ func (m *QueryTotalDataAmountRequest) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryTotalDataAmountRequest) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryDataRequest) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryTotalDataAmountRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryDataRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -628,7 +648,7 @@ func (m *QueryTotalDataAmountRequest) MarshalToSizedBuffer(dAtA []byte) (int, er
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryTotalDataAmountResponse) Marshal() (dAtA []byte, err error) {
+func (m *QueryDataResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -638,84 +658,21 @@ func (m *QueryTotalDataAmountResponse) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryTotalDataAmountResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryDataResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryTotalDataAmountResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryDataResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if m.TotalAmount != 0 {
-		i = encodeVarintQuery(dAtA, i, uint64(m.TotalAmount))
-		i--
-		dAtA[i] = 0x8
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *QueryClassSharesRequest) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *QueryClassSharesRequest) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *QueryClassSharesRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.Class) > 0 {
-		i -= len(m.Class)
-		copy(dAtA[i:], m.Class)
-		i = encodeVarintQuery(dAtA, i, uint64(len(m.Class)))
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *QueryClassSharesResponse) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *QueryClassSharesResponse) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *QueryClassSharesResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.Shares) > 0 {
-		for iNdEx := len(m.Shares) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.Shares[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintQuery(dAtA, i, uint64(size))
-			}
+	if len(m.Urls) > 0 {
+		for iNdEx := len(m.Urls) - 1; iNdEx >= 0; iNdEx-- {
+			i -= len(m.Urls[iNdEx])
+			copy(dAtA[i:], m.Urls[iNdEx])
+			i = encodeVarintQuery(dAtA, i, uint64(len(m.Urls[iNdEx])))
 			i--
 			dAtA[i] = 0xa
 		}
@@ -723,7 +680,7 @@ func (m *QueryClassSharesResponse) MarshalToSizedBuffer(dAtA []byte) (int, error
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryDataFromBuyerRequest) Marshal() (dAtA []byte, err error) {
+func (m *QueryShareRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -733,12 +690,82 @@ func (m *QueryDataFromBuyerRequest) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryDataFromBuyerRequest) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryShareRequest) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryDataFromBuyerRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryShareRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Class) > 0 {
+		i -= len(m.Class)
+		copy(dAtA[i:], m.Class)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.Class)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Uploader) > 0 {
+		i -= len(m.Uploader)
+		copy(dAtA[i:], m.Uploader)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.Uploader)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryShareResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryShareResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryShareResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Share) > 0 {
+		for iNdEx := len(m.Share) - 1; iNdEx >= 0; iNdEx-- {
+			f1 := math.Float64bits(float64(m.Share[iNdEx]))
+			i -= 8
+			encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(f1))
+		}
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.Share)*8))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryDataSetFromBuyerRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryDataSetFromBuyerRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryDataSetFromBuyerRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -753,7 +780,7 @@ func (m *QueryDataFromBuyerRequest) MarshalToSizedBuffer(dAtA []byte) (int, erro
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryDataFromBuyerResponse) Marshal() (dAtA []byte, err error) {
+func (m *QueryDataSetFromBuyerResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -763,26 +790,21 @@ func (m *QueryDataFromBuyerResponse) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryDataFromBuyerResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryDataSetFromBuyerResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryDataFromBuyerResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryDataSetFromBuyerResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if len(m.Data) > 0 {
-		for iNdEx := len(m.Data) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.Data[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintQuery(dAtA, i, uint64(size))
-			}
+	if len(m.Classes) > 0 {
+		for iNdEx := len(m.Classes) - 1; iNdEx >= 0; iNdEx-- {
+			i -= len(m.Classes[iNdEx])
+			copy(dAtA[i:], m.Classes[iNdEx])
+			i = encodeVarintQuery(dAtA, i, uint64(len(m.Classes[iNdEx])))
 			i--
 			dAtA[i] = 0xa
 		}
@@ -790,7 +812,7 @@ func (m *QueryDataFromBuyerResponse) MarshalToSizedBuffer(dAtA []byte) (int, err
 	return len(dAtA) - i, nil
 }
 
-func (m *Data) Marshal() (dAtA []byte, err error) {
+func (m *QueryParamsRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -800,34 +822,20 @@ func (m *Data) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *Data) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryParamsRequest) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *Data) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryParamsRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if len(m.Url) > 0 {
-		i -= len(m.Url)
-		copy(dAtA[i:], m.Url)
-		i = encodeVarintQuery(dAtA, i, uint64(len(m.Url)))
-		i--
-		dAtA[i] = 0x12
-	}
-	if len(m.Class) > 0 {
-		i -= len(m.Class)
-		copy(dAtA[i:], m.Class)
-		i = encodeVarintQuery(dAtA, i, uint64(len(m.Class)))
-		i--
-		dAtA[i] = 0xa
-	}
 	return len(dAtA) - i, nil
 }
 
-func (m *Share) Marshal() (dAtA []byte, err error) {
+func (m *QueryParamsResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -837,26 +845,25 @@ func (m *Share) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *Share) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryParamsResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *Share) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryParamsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if m.Proportion != 0 {
-		i -= 8
-		encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(math.Float64bits(float64(m.Proportion))))
-		i--
-		dAtA[i] = 0x11
-	}
-	if len(m.Address) > 0 {
-		i -= len(m.Address)
-		copy(dAtA[i:], m.Address)
-		i = encodeVarintQuery(dAtA, i, uint64(len(m.Address)))
+	if m.Params != nil {
+		{
+			size, err := m.Params.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
 		i--
 		dAtA[i] = 0xa
 	}
@@ -874,7 +881,7 @@ func encodeVarintQuery(dAtA []byte, offset int, v uint64) int {
 	dAtA[offset] = uint8(v)
 	return base
 }
-func (m *QueryTotalDataAmountRequest) Size() (n int) {
+func (m *QueryDataRequest) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -887,47 +894,51 @@ func (m *QueryTotalDataAmountRequest) Size() (n int) {
 	return n
 }
 
-func (m *QueryTotalDataAmountResponse) Size() (n int) {
+func (m *QueryDataResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	if m.TotalAmount != 0 {
-		n += 1 + sovQuery(uint64(m.TotalAmount))
-	}
-	return n
-}
-
-func (m *QueryClassSharesRequest) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.Class)
-	if l > 0 {
-		n += 1 + l + sovQuery(uint64(l))
-	}
-	return n
-}
-
-func (m *QueryClassSharesResponse) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if len(m.Shares) > 0 {
-		for _, e := range m.Shares {
-			l = e.Size()
+	if len(m.Urls) > 0 {
+		for _, s := range m.Urls {
+			l = len(s)
 			n += 1 + l + sovQuery(uint64(l))
 		}
 	}
 	return n
 }
 
-func (m *QueryDataFromBuyerRequest) Size() (n int) {
+func (m *QueryShareRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Uploader)
+	if l > 0 {
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	l = len(m.Class)
+	if l > 0 {
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryShareResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if len(m.Share) > 0 {
+		n += 1 + sovQuery(uint64(len(m.Share)*8)) + len(m.Share)*8
+	}
+	return n
+}
+
+func (m *QueryDataSetFromBuyerRequest) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -940,50 +951,39 @@ func (m *QueryDataFromBuyerRequest) Size() (n int) {
 	return n
 }
 
-func (m *QueryDataFromBuyerResponse) Size() (n int) {
+func (m *QueryDataSetFromBuyerResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	if len(m.Data) > 0 {
-		for _, e := range m.Data {
-			l = e.Size()
+	if len(m.Classes) > 0 {
+		for _, s := range m.Classes {
+			l = len(s)
 			n += 1 + l + sovQuery(uint64(l))
 		}
 	}
 	return n
 }
 
-func (m *Data) Size() (n int) {
+func (m *QueryParamsRequest) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	l = len(m.Class)
-	if l > 0 {
-		n += 1 + l + sovQuery(uint64(l))
-	}
-	l = len(m.Url)
-	if l > 0 {
-		n += 1 + l + sovQuery(uint64(l))
-	}
 	return n
 }
 
-func (m *Share) Size() (n int) {
+func (m *QueryParamsResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	l = len(m.Address)
-	if l > 0 {
+	if m.Params != nil {
+		l = m.Params.Size()
 		n += 1 + l + sovQuery(uint64(l))
-	}
-	if m.Proportion != 0 {
-		n += 9
 	}
 	return n
 }
@@ -994,7 +994,7 @@ func sovQuery(x uint64) (n int) {
 func sozQuery(x uint64) (n int) {
 	return sovQuery(uint64((x << 1) ^ uint64((int64(x) >> 63))))
 }
-func (m *QueryTotalDataAmountRequest) Unmarshal(dAtA []byte) error {
+func (m *QueryDataRequest) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1017,10 +1017,10 @@ func (m *QueryTotalDataAmountRequest) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryTotalDataAmountRequest: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryDataRequest: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryTotalDataAmountRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryDataRequest: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -1076,7 +1076,7 @@ func (m *QueryTotalDataAmountRequest) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryTotalDataAmountResponse) Unmarshal(dAtA []byte) error {
+func (m *QueryDataResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1099,17 +1099,17 @@ func (m *QueryTotalDataAmountResponse) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryTotalDataAmountResponse: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryDataResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryTotalDataAmountResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryDataResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field TotalAmount", wireType)
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Urls", wireType)
 			}
-			m.TotalAmount = 0
+			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowQuery
@@ -1119,11 +1119,24 @@ func (m *QueryTotalDataAmountResponse) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.TotalAmount |= uint64(b&0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Urls = append(m.Urls, string(dAtA[iNdEx:postIndex]))
+			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
 			skippy, err := skipQuery(dAtA[iNdEx:])
@@ -1145,7 +1158,7 @@ func (m *QueryTotalDataAmountResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryClassSharesRequest) Unmarshal(dAtA []byte) error {
+func (m *QueryShareRequest) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1168,13 +1181,45 @@ func (m *QueryClassSharesRequest) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryClassSharesRequest: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryShareRequest: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryClassSharesRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryShareRequest: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Uploader", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Uploader = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
 			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Class", wireType)
 			}
@@ -1227,7 +1272,7 @@ func (m *QueryClassSharesRequest) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryClassSharesResponse) Unmarshal(dAtA []byte) error {
+func (m *QueryShareResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1250,46 +1295,66 @@ func (m *QueryClassSharesResponse) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryClassSharesResponse: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryShareResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryClassSharesResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryShareResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Shares", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowQuery
-				}
-				if iNdEx >= l {
+			if wireType == 1 {
+				var v uint64
+				if (iNdEx + 8) > l {
 					return io.ErrUnexpectedEOF
 				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
+				v = uint64(encoding_binary.LittleEndian.Uint64(dAtA[iNdEx:]))
+				iNdEx += 8
+				v2 := float64(math.Float64frombits(v))
+				m.Share = append(m.Share, v2)
+			} else if wireType == 2 {
+				var packedLen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return ErrIntOverflowQuery
+					}
+					if iNdEx >= l {
+						return io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					packedLen |= int(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
 				}
+				if packedLen < 0 {
+					return ErrInvalidLengthQuery
+				}
+				postIndex := iNdEx + packedLen
+				if postIndex < 0 {
+					return ErrInvalidLengthQuery
+				}
+				if postIndex > l {
+					return io.ErrUnexpectedEOF
+				}
+				var elementCount int
+				elementCount = packedLen / 8
+				if elementCount != 0 && len(m.Share) == 0 {
+					m.Share = make([]float64, 0, elementCount)
+				}
+				for iNdEx < postIndex {
+					var v uint64
+					if (iNdEx + 8) > l {
+						return io.ErrUnexpectedEOF
+					}
+					v = uint64(encoding_binary.LittleEndian.Uint64(dAtA[iNdEx:]))
+					iNdEx += 8
+					v2 := float64(math.Float64frombits(v))
+					m.Share = append(m.Share, v2)
+				}
+			} else {
+				return fmt.Errorf("proto: wrong wireType = %d for field Share", wireType)
 			}
-			if msglen < 0 {
-				return ErrInvalidLengthQuery
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Shares = append(m.Shares, &Share{})
-			if err := m.Shares[len(m.Shares)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
 			skippy, err := skipQuery(dAtA[iNdEx:])
@@ -1311,7 +1376,7 @@ func (m *QueryClassSharesResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryDataFromBuyerRequest) Unmarshal(dAtA []byte) error {
+func (m *QueryDataSetFromBuyerRequest) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1334,10 +1399,10 @@ func (m *QueryDataFromBuyerRequest) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryDataFromBuyerRequest: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryDataSetFromBuyerRequest: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryDataFromBuyerRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryDataSetFromBuyerRequest: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -1393,7 +1458,7 @@ func (m *QueryDataFromBuyerRequest) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryDataFromBuyerResponse) Unmarshal(dAtA []byte) error {
+func (m *QueryDataSetFromBuyerResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1416,15 +1481,147 @@ func (m *QueryDataFromBuyerResponse) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryDataFromBuyerResponse: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryDataSetFromBuyerResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryDataFromBuyerResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryDataSetFromBuyerResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Data", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field Classes", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Classes = append(m.Classes, string(dAtA[iNdEx:postIndex]))
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryParamsRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryParamsRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryParamsRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryParamsResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryParamsResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryParamsResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Params", wireType)
 			}
 			var msglen int
 			for shift := uint(0); ; shift += 7 {
@@ -1451,218 +1648,13 @@ func (m *QueryDataFromBuyerResponse) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Data = append(m.Data, &Data{})
-			if err := m.Data[len(m.Data)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			if m.Params == nil {
+				m.Params = &Params{}
+			}
+			if err := m.Params.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipQuery(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *Data) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowQuery
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: Data: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: Data: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Class", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowQuery
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthQuery
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Class = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Url", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowQuery
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthQuery
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Url = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipQuery(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *Share) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowQuery
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: Share: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: Share: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Address", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowQuery
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthQuery
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthQuery
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Address = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 2:
-			if wireType != 1 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Proportion", wireType)
-			}
-			var v uint64
-			if (iNdEx + 8) > l {
-				return io.ErrUnexpectedEOF
-			}
-			v = uint64(encoding_binary.LittleEndian.Uint64(dAtA[iNdEx:]))
-			iNdEx += 8
-			m.Proportion = float64(math.Float64frombits(v))
 		default:
 			iNdEx = preIndex
 			skippy, err := skipQuery(dAtA[iNdEx:])
