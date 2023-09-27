@@ -10,3 +10,7 @@ message DataSet {
 message Classes {
   repeated string classes = 1;
 }
+
+message UploaderSet {
+  repeated string uploaderSet = 1;
+}

@@ -32,7 +32,12 @@ require (
 	gopkg.in/yaml.v2 v2.4.0
 )
 
-require github.com/regen-network/cosmos-proto v0.3.1 // indirect
+require (
+	github.com/gookit/goutil v0.6.12 // indirect
+	github.com/regen-network/cosmos-proto v0.3.1 // indirect
+	golang.org/x/sync v0.3.0 // indirect
+	golang.org/x/text v0.11.0 // indirect
+)
 
 require (
 	github.com/cosmos/cosmos-proto v1.0.0-beta.3

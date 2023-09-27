@@ -2,6 +2,8 @@ package types
 
 import "strings"
 
+var ParamsKey = []byte{0x00}
+
 const (
 	ModuleName = "datamarket"
 )
@@ -10,6 +12,7 @@ const (
 const KeySeparator = "|"
 
 var (
+	DataSetKey    = "dataset"
 	DataSetPrefix = "dataset"
 	BuyerPrefix   = "buyer"
 )
