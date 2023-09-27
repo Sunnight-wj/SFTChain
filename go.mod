@@ -35,8 +35,6 @@ require (
 require (
 	github.com/gookit/goutil v0.6.12 // indirect
 	github.com/regen-network/cosmos-proto v0.3.1 // indirect
-	golang.org/x/sync v0.3.0 // indirect
-	golang.org/x/text v0.11.0 // indirect
 )
 
 require (
