@@ -30,7 +30,8 @@ message MsgBuyDataResponse {
 }
 
 message MsgUpdateParams {
-  Params params = 1;
+  string Authority = 1;
+  Params params = 2;
 }
 
 message MsgUpdateParamsResponse{}
