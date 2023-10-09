@@ -97,7 +97,7 @@ all: install
 	@GOGC=1 golangci-lint run --fix --timeout=8m
 
 install: go.sum
-	go install -mod=readonly $(BUILD_FLAGS) ./cmd/junod
+	go install $(BUILD_FLAGS) ./cmd/junod
 
 build:
 	go build $(BUILD_FLAGS) -o bin/junod ./cmd/junod

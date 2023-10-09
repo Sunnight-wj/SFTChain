@@ -14,7 +14,7 @@ export CHAIN_ID=${CHAIN_ID:-"local-1"}
 export MONIKER="localjuno"
 export KEYALGO="secp256k1"
 export KEYRING=${KEYRING:-"test"}
-export HOME_DIR=$(eval echo "${HOME_DIR:-"~/.juno"}")
+export HOME_DIR=$(eval echo "${HOME_DIR:-"~/.juno1"}")
 export BINARY=${BINARY:-junod}
 
 export CLEAN=${CLEAN:-"false"}
