@@ -1,6 +1,7 @@
 syntax = "proto3";
 package sft.datamarket.v1;
 
+import "gogoproto/gogo.proto";
 import "cosmos/base/v1beta1/coin.proto";
 
 option go_package = "github.com/CosmosContracts/juno/x/datamarket/types";
@@ -10,6 +11,6 @@ message GenesisState {
 }
 
 message Params {
-  cosmos.base.v1beta1.Coin data_price = 1;
+  cosmos.base.v1beta1.Coin data_price = 1 [(gogoproto.nullable) = false];
   double fee_percentage = 2;
 }

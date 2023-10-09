@@ -40,7 +40,7 @@ message MsgMintToResponse {}
 
 message MsgUpdateParams {
   string Authority = 1;
-  Params params = 2;
+  Params params = 2 [(gogoproto.nullable) = false];
 }
 
 message MsgUpdateParamsResponse{}
