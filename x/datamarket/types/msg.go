@@ -79,7 +79,6 @@ func (msg MsgBuyData) ValidateBasic() error {
 	if _, err := sdk.AccAddressFromBech32(msg.Buyer); err != nil {
 		return errorsmod.Wrapf(err, "invalid buyer address %s", msg.Buyer)
 	}
-
 	return nil
 }
 
@@ -96,6 +95,7 @@ func (msg MsgBuyData) GetSigners() []sdk.AccAddress {
 
 // NewMsgUpdateParams creates new instance of MsgUpdateParams
 func NewMsgUpdateParams(
+	authority sdk.Address,
 	denom string,
 	amount int64,
 	feePercentage float64,
@@ -107,6 +107,7 @@ func NewMsgUpdateParams(
 	}
 
 	return &MsgUpdateParams{
+		Authority: authority.String(),
 		Params: &Params{
 			FeePercentage: feePercentage,
 			DataPrice:     dataPrice,
@@ -133,6 +134,6 @@ func (msg *MsgUpdateParams) GetSignBytes() []byte {
 
 // GetSigners defines whose signature is required
 func (msg MsgUpdateParams) GetSigners() []sdk.AccAddress {
-	from, _ := sdk.AccAddressFromBech32(msg.DeployerAddress)
+	from, _ := sdk.AccAddressFromBech32(msg.Authority)
 	return []sdk.AccAddress{from}
 }

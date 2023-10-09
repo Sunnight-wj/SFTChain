@@ -2,8 +2,10 @@ package keeper
 
 import (
 	"context"
+	errorsmod "cosmossdk.io/errors"
 	"fmt"
 	sdk "github.com/cosmos/cosmos-sdk/types"
+	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 
 	"github.com/CosmosContracts/juno/v17/x/datamarket/types"
 )
@@ -55,6 +57,10 @@ func (server msgServer) BuyData(goCtx context.Context, msg *types.MsgBuyData) (*
 
 func (server msgServer) UpdateParams(goCtx context.Context, msg *types.MsgUpdateParams) (*types.MsgUpdateParamsResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
+
+	if server.authority != msg.Authority {
+		return nil, errorsmod.Wrapf(govtypes.ErrInvalidSigner, "invalid authority; expected %s, got %s", server.authority, msg.Authority)
+	}
 
 	err := server.Keeper.SetParams(ctx, *msg.Params)
 	if err != nil {

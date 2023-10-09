@@ -83,6 +83,8 @@ import (
 
 	clockkeeper "github.com/CosmosContracts/juno/v17/x/clock/keeper"
 	clocktypes "github.com/CosmosContracts/juno/v17/x/clock/types"
+	datamarketkeeper "github.com/CosmosContracts/juno/v17/x/datamarket/keeper"
+	datamarkettypes "github.com/CosmosContracts/juno/v17/x/datamarket/types"
 	dripkeeper "github.com/CosmosContracts/juno/v17/x/drip/keeper"
 	driptypes "github.com/CosmosContracts/juno/v17/x/drip/types"
 	feesharekeeper "github.com/CosmosContracts/juno/v17/x/feeshare/keeper"
@@ -124,6 +126,7 @@ var maccPerms = map[string][]string{
 	tokenfactorytypes.ModuleName:   {authtypes.Minter, authtypes.Burner},
 	globalfee.ModuleName:           nil,
 	buildertypes.ModuleName:        nil,
+	datamarkettypes.ModuleName:     nil,
 }
 
 type AppKeepers struct {
@@ -176,6 +179,7 @@ type AppKeepers struct {
 	WasmKeeper         wasmkeeper.Keeper
 	scopedWasmKeeper   capabilitykeeper.ScopedKeeper
 	TokenFactoryKeeper tokenfactorykeeper.Keeper
+	DataMarketKeeper   datamarketkeeper.Keeper
 
 	DripKeeper dripkeeper.Keeper
 
@@ -463,6 +467,15 @@ func NewAppKeepers(
 		appKeepers.BankKeeper,
 		appKeepers.DistrKeeper,
 		tokenFactoryCapabilities,
+		govModAddress,
+	)
+
+	// Create the DataMarket Keeper
+	appKeepers.DataMarketKeeper = datamarketkeeper.NewKeeper(
+		appCodec,
+		appKeepers.keys[datamarkettypes.StoreKey],
+		appKeepers.AccountKeeper,
+		appKeepers.BankKeeper,
 		govModAddress,
 	)
 
