@@ -3,12 +3,15 @@ package sft.datamarket.v1;
 
 option go_package = "github.com/CosmosContracts/juno/x/datamarket/types";
 
+import "gogoproto/gogo.proto";
 import "sft/datamarket/v1/genesis.proto";
 import "sft/datamarket/v1/data.proto";
+import "cosmos/base/v1beta1/coin.proto";
 
 service Msg {
   rpc UploadData(MsgUploadData) returns (MsgUploadDataResponse);
   rpc BuyData(MsgBuyData) returns (MsgBuyDataResponse);
+  rpc MintTo(MsgMintTo) returns (MsgMintToResponse);
   rpc UpdateParams(MsgUpdateParams) returns (MsgUpdateParamsResponse);
 }
 
@@ -28,6 +31,12 @@ message MsgBuyData {
 message MsgBuyDataResponse {
   DataSet dataSet = 1;
 }
+
+message MsgMintTo {
+  cosmos.base.v1beta1.Coin amount = 1 [(gogoproto.nullable) = false];
+}
+
+message MsgMintToResponse {}
 
 message MsgUpdateParams {
   string Authority = 1;
