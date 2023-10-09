@@ -107,3 +107,20 @@ func (k Keeper) calculateCost(ctx sdk.Context, class string) (sdk.Coin, error) {
 	}
 	return fee, nil
 }
+
+func (k Keeper) MintTo(ctx sdk.Context, amount sdk.Coin, to string) error {
+	err := k.bankKeeper.MintCoins(ctx, types.ModuleName, sdk.NewCoins(amount))
+	if err != nil {
+		return err
+	}
+
+	addr, err := sdk.AccAddressFromBech32(to)
+	if err != nil {
+		return err
+	}
+
+	if k.bankKeeper.BlockedAddr(addr) {
+		return fmt.Errorf("failed to mint to blocked address: %s", addr)
+	}
+	return k.bankKeeper.SendCoinsFromModuleToAccount(ctx, types.ModuleName, addr, sdk.NewCoins(amount))
+}

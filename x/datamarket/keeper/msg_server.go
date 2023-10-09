@@ -62,7 +62,7 @@ func (server msgServer) UpdateParams(goCtx context.Context, msg *types.MsgUpdate
 		return nil, errorsmod.Wrapf(govtypes.ErrInvalidSigner, "invalid authority; expected %s, got %s", server.authority, msg.Authority)
 	}
 
-	err := server.Keeper.SetParams(ctx, *msg.Params)
+	err := server.Keeper.SetParams(ctx, msg.Params)
 	if err != nil {
 		return nil, err
 	}
@@ -75,4 +75,9 @@ func (server msgServer) UpdateParams(goCtx context.Context, msg *types.MsgUpdate
 		),
 	})
 	return &types.MsgUpdateParamsResponse{}, nil
+}
+
+func (server msgServer) MintTo(goCtx context.Context, msg *types.MsgMintTo) (*types.MsgMintToResponse, error) {
+	ctx := sdk.UnwrapSDKContext(goCtx)
+
 }

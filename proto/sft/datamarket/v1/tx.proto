@@ -32,8 +32,10 @@ message MsgBuyDataResponse {
   DataSet dataSet = 1;
 }
 
-message MsgMintTo {
-  cosmos.base.v1beta1.Coin amount = 1 [(gogoproto.nullable) = false];
+message MsgMint {
+  string sender = 1;
+  cosmos.base.v1beta1.Coin amount = 2 [(gogoproto.nullable) = false];
+  string mintToAddress = 3;
 }
 
 message MsgMintToResponse {}
