@@ -10,7 +10,7 @@ func (k Keeper) Params(ctx context.Context, _ *types.QueryParamsRequest) (*types
 	sdkCtx := sdk.UnwrapSDKContext(ctx)
 	params := k.GetParams(sdkCtx)
 
-	return &types.QueryParamsResponse{Params: &params}, nil
+	return &types.QueryParamsResponse{Params: params}, nil
 }
 
 func (k Keeper) Data(ctx context.Context, request *types.QueryDataRequest) (*types.QueryDataResponse, error) {
@@ -22,7 +22,7 @@ func (k Keeper) Data(ctx context.Context, request *types.QueryDataRequest) (*typ
 		return nil, err
 	}
 
-	return &types.QueryDataResponse{DataSet: &urls}, nil
+	return &types.QueryDataResponse{DataSet: urls}, nil
 }
 
 func (k Keeper) Share(ctx context.Context, request *types.QueryShareRequest) (*types.QueryShareResponse, error) {
@@ -42,5 +42,5 @@ func (k Keeper) DataSetFromBuyer(ctx context.Context, request *types.QueryDataSe
 
 	dataSet, _ := k.getDataSetByBuyer(sdkCtx, request.Buyer)
 
-	return &types.QueryDataSetFromBuyerResponse{Classes: &dataSet}, nil
+	return &types.QueryDataSetFromBuyerResponse{Classes: dataSet}, nil
 }
