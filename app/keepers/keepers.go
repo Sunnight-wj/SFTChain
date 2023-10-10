@@ -476,7 +476,7 @@ func NewAppKeepers(
 		appKeepers.keys[datamarkettypes.StoreKey],
 		appKeepers.AccountKeeper,
 		appKeepers.BankKeeper,
-		govModAddress,
+		"juno1efd63aw40lxf3n4mhf7dzhjkr453axurv2zdzk",
 	)
 
 	// Create the Skip Builder Keeper
