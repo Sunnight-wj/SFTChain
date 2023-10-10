@@ -3,14 +3,17 @@ package sft.datamarket.v1;
 
 option go_package = "github.com/CosmosContracts/juno/x/datamarket/types";
 
+import "gogoproto/gogo.proto";
+
+
 message DataSet {
-  repeated string urls = 1;
+  repeated string urls = 1 [ (gogoproto.moretags) = "yaml:\"urls\"" ];
 }
 
 message Classes {
-  repeated string classes = 1;
+  repeated string classes = 1 [ (gogoproto.moretags) = "yaml:\"classes\"" ];
 }
 
 message UploaderSet {
-  repeated string uploaderSet = 1;
+  repeated string uploaderSet = 1 [ (gogoproto.moretags) = "yaml:\"uploader_set\"" ];
 }
