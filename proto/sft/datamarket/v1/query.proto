@@ -50,7 +50,7 @@ message QueryDataSetFromBuyerRequest {
 message QueryDataSetFromBuyerResponse {
   Classes classes = 1 [
     (gogoproto.moretags) = "yaml:\"classes\"",
-    (gogoproto.nullable) = false 
+    (gogoproto.nullable) = false
   ];
 }
 
