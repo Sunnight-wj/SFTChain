@@ -80,6 +80,10 @@ from_scratch () {
   update_test_genesis '.app_state["tokenfactory"]["params"]["denom_creation_fee"]=[]'
   update_test_genesis '.app_state["tokenfactory"]["params"]["denom_creation_gas_consume"]=2000000'
 
+  # DataMarket
+  update_test_genesis '.app_state["datamarket"]["params"]["data_price"]=[{"denom":"ujuno","amount":"10"}]'
+  update_test_genesis '.app_state["datamarket"]["params"]["fee_percentage"]="0.1"'
+
   # FeeShare
   update_test_genesis '.app_state["feeshare"]["params"]["allowed_denoms"]=["ujuno"]'
 
