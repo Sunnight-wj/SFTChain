@@ -2,8 +2,8 @@ package types
 
 import (
 	errorsmod "cosmossdk.io/errors"
-	"cosmossdk.io/math"
 	sdk "github.com/cosmos/cosmos-sdk/types"
+	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 )
 
 var (
@@ -16,6 +16,7 @@ const (
 	TypeMsgUploadData   = "upload_data"
 	TypeMsgBuyData      = "buy_data"
 	TypeMsgUpdateParams = "update_params"
+	TypeMsgMintTo       = "mint_to"
 )
 
 func NewMsgUploadData(
@@ -96,21 +97,15 @@ func (msg MsgBuyData) GetSigners() []sdk.AccAddress {
 // NewMsgUpdateParams creates new instance of MsgUpdateParams
 func NewMsgUpdateParams(
 	authority sdk.Address,
-	denom string,
-	amount int64,
+	amount sdk.Coin,
 	feePercentage float64,
 ) *MsgUpdateParams {
 
-	dataPrice := &sdk.Coin{
-		Denom:  denom,
-		Amount: math.NewInt(amount),
-	}
-
 	return &MsgUpdateParams{
 		Authority: authority.String(),
-		Params: &Params{
+		Params: Params{
 			FeePercentage: feePercentage,
-			DataPrice:     dataPrice,
+			DataPrice:     amount,
 		},
 	}
 }
@@ -135,5 +130,52 @@ func (msg *MsgUpdateParams) GetSignBytes() []byte {
 // GetSigners defines whose signature is required
 func (msg MsgUpdateParams) GetSigners() []sdk.AccAddress {
 	from, _ := sdk.AccAddressFromBech32(msg.Authority)
+	return []sdk.AccAddress{from}
+}
+
+// NewMsgUpdateParams creates new instance of MsgUpdateParams
+func NewMsgMintTo(
+	sender sdk.AccAddress,
+	amount sdk.Coin,
+	to sdk.AccAddress,
+) *MsgMintTo {
+
+	return &MsgMintTo{
+		Sender:        sender.String(),
+		Amount:        amount,
+		MintToAddress: to.String(),
+	}
+}
+
+// Route returns the name of the module
+func (msg MsgMintTo) Route() string { return RouterKey }
+
+// Type returns the the action
+func (msg MsgMintTo) Type() string { return TypeMsgMintTo }
+
+// ValidateBasic runs stateless checks on the message
+func (msg MsgMintTo) ValidateBasic() error {
+	_, err := sdk.AccAddressFromBech32(msg.Sender)
+	if err != nil {
+		return err
+	}
+	_, err = sdk.AccAddressFromBech32(msg.MintToAddress)
+	if err != nil {
+		return err
+	}
+	if !msg.Amount.IsValid() || msg.Amount.Amount.Equal(sdk.ZeroInt()) {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidCoins, msg.Amount.String())
+	}
+	return nil
+}
+
+// GetSignBytes encodes the message for signing
+func (msg *MsgMintTo) GetSignBytes() []byte {
+	return sdk.MustSortJSON(AminoCdc.MustMarshalJSON(msg))
+}
+
+// GetSigners defines whose signature is required
+func (msg MsgMintTo) GetSigners() []sdk.AccAddress {
+	from, _ := sdk.AccAddressFromBech32(msg.Sender)
 	return []sdk.AccAddress{from}
 }

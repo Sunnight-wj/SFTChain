@@ -80,4 +80,18 @@ func (server msgServer) UpdateParams(goCtx context.Context, msg *types.MsgUpdate
 func (server msgServer) MintTo(goCtx context.Context, msg *types.MsgMintTo) (*types.MsgMintToResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
+	err := server.Keeper.MintTo(ctx, msg.Amount, msg.MintToAddress)
+	if err != nil {
+		return nil, err
+	}
+
+	ctx.EventManager().EmitEvents(sdk.Events{
+		sdk.NewEvent(
+			types.TypeMsgMintTo,
+			sdk.NewAttribute(types.AttributeMintToSender, msg.Sender),
+			sdk.NewAttribute(types.AttributeMintToAmount, msg.Amount.String()),
+			sdk.NewAttribute(types.AttributeMintToAddress, msg.MintToAddress),
+		),
+	})
+	return &types.MsgMintToResponse{}, nil
 }
