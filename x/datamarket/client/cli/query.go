@@ -89,7 +89,7 @@ func GetCmdQueryData() *cobra.Command {
 // GetCmdQueryShare returns the uploader share in an dataSet
 func GetCmdQueryShare() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "share [class] [uploader address] [flags]",
+		Use:   "share [class] [uploader_address] [flags]",
 		Short: "Get the uploader share in an dataSet",
 		Args:  cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {

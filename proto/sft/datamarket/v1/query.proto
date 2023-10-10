@@ -1,6 +1,7 @@
 syntax = "proto3";
 package sft.datamarket.v1;
 
+import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "sft/datamarket/v1/genesis.proto";
 import "sft/datamarket/v1/data.proto";
@@ -27,7 +28,7 @@ message QueryDataRequest {
 }
 
 message QueryDataResponse {
-  DataSet dataSet = 1;
+  DataSet dataSet = 1 [ (gogoproto.nullable) = false ];
 }
 
 message QueryShareRequest {
@@ -44,12 +45,12 @@ message QueryDataSetFromBuyerRequest {
 }
 
 message QueryDataSetFromBuyerResponse {
-  Classes classes = 1;
+  Classes classes = 1 [ (gogoproto.nullable) = false ];
 }
 
 message QueryParamsRequest {}
 
 message QueryParamsResponse {
-  Params params = 1;
+  Params params = 1 [ (gogoproto.nullable) = false ];
 }
 
