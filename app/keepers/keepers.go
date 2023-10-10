@@ -126,7 +126,7 @@ var maccPerms = map[string][]string{
 	tokenfactorytypes.ModuleName:   {authtypes.Minter, authtypes.Burner},
 	globalfee.ModuleName:           nil,
 	buildertypes.ModuleName:        nil,
-	datamarkettypes.ModuleName:     nil,
+	datamarkettypes.ModuleName:     {authtypes.Minter, authtypes.Burner},
 }
 
 type AppKeepers struct {
@@ -676,6 +676,7 @@ func initParamsKeeper(appCodec codec.BinaryCodec, legacyAmino *codec.LegacyAmino
 	paramsKeeper.Subspace(tokenfactorytypes.ModuleName)
 	paramsKeeper.Subspace(feesharetypes.ModuleName)
 	paramsKeeper.Subspace(wasmtypes.ModuleName)
+	paramsKeeper.Subspace(datamarkettypes.ModuleName)
 
 	return paramsKeeper
 }
