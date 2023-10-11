@@ -77,6 +77,9 @@ func (k Keeper) distributeCost(ctx sdk.Context, class string, cost sdk.Coin) err
 	if err != nil {
 		return err
 	}
+	if len(uploaderSet.UploaderSet) == 0 {
+		return fmt.Errorf("uploader set is empty, class: %s", class)
+	}
 	dataSet, _ := k.getDataByKey(ctx, types.DataSetKey, class)
 	totalDataAmount := uint64(len(dataSet.Urls))
 	for _, uploader := range uploaderSet.UploaderSet {
