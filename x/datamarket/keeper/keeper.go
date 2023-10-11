@@ -43,16 +43,6 @@ func (k Keeper) getAuthority() string {
 	return k.authority
 }
 
-type DataMarket string
-
-func (d DataMarket) Name() string {
-	return "datamarket"
-}
-
-func (d DataMarket) String() string {
-	return "datamarket"
-}
-
 func Logger(ctx sdk.Context) log.Logger {
 	return ctx.Logger().With("module", fmt.Sprintf("x/%s", types.ModuleName))
 }
@@ -63,9 +53,9 @@ func (k Keeper) CreateModuleAccount(ctx sdk.Context) {
 }
 
 func (k Keeper) GetDataSetPrefixStore(ctx sdk.Context, class string) sdk.KVStore {
-	key := DataMarket("datamarket")
-	store := ctx.KVStore(key)
-	return prefix.NewStore(store, types.GetDataSetPrefix(class))
+	store := ctx.KVStore(k.storeKey)
+	//return prefix.NewStore(store, types.GetDataSetPrefix(class))
+	return store
 }
 
 func (k Keeper) GetBuyerPrefixStore(ctx sdk.Context, buyer string) sdk.KVStore {
