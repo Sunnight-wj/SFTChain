@@ -38,9 +38,6 @@ func (k Keeper) addDataByKey(ctx sdk.Context, key, class, url string) error {
 		return fmt.Errorf("data: %s already exist in dataset: %s", url, class)
 	}
 	dataSet.Urls = append(dataSet.Urls, url)
-	dataSet = types.DataSet{
-		Urls: []string{"www.wangjin2.com", "www.sft2.com"},
-	}
 	bz, err := proto.Marshal(&dataSet)
 	if err != nil {
 		return err
