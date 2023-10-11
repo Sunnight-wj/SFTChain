@@ -52,7 +52,7 @@ func (server msgServer) BuyData(goCtx context.Context, msg *types.MsgBuyData) (*
 		),
 	})
 	dataSet, _ := server.Keeper.getDataByKey(ctx, types.DataSetKey, msg.Class)
-	return &types.MsgBuyDataResponse{DataSet: &dataSet}, nil
+	return &types.MsgBuyDataResponse{DataSet: dataSet}, nil
 }
 
 func (server msgServer) UpdateParams(goCtx context.Context, msg *types.MsgUpdateParams) (*types.MsgUpdateParamsResponse, error) {

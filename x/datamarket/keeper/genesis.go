@@ -8,12 +8,12 @@ import (
 
 func (k Keeper) InitGenesis(ctx sdk.Context, genState types.GenesisState) {
 	k.CreateModuleAccount(ctx)
-	k.SetParams(ctx, *genState.Params)
+	k.SetParams(ctx, genState.Params)
 }
 
 func (k Keeper) ExportGenesis(ctx sdk.Context) *types.GenesisState {
 	params := k.GetParams(ctx)
 	return &types.GenesisState{
-		Params: &params,
+		Params: params,
 	}
 }
