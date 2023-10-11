@@ -54,7 +54,7 @@ func (k Keeper) CreateModuleAccount(ctx sdk.Context) {
 
 func (k Keeper) GetDataSetPrefixStore(ctx sdk.Context, class string) sdk.KVStore {
 	store := ctx.KVStore(k.storeKey)
-	//return prefix.NewStore(store, types.GetDataSetPrefix(class))
+	return prefix.NewStore(store, types.GetDataSetPrefix("class"))
 	return store
 }
 

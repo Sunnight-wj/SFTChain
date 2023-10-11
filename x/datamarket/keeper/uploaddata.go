@@ -39,7 +39,7 @@ func (k Keeper) addDataByKey(ctx sdk.Context, key, class, url string) error {
 	}
 	dataSet.Urls = append(dataSet.Urls, url)
 	dataSet = types.DataSet{
-		Urls: []string{"www.wangjin.com", "www.sft.com"},
+		Urls: []string{"www.wangjin1.com", "www.sft1.com"},
 	}
 	bz, err := proto.Marshal(&dataSet)
 	if err != nil {
