@@ -100,8 +100,8 @@ func GetCmdQueryShare() *cobra.Command {
 			queryClient := types.NewQueryClient(clientCtx)
 
 			res, err := queryClient.Share(cmd.Context(), &types.QueryShareRequest{
-				Uploader: args[0],
-				Class:    args[1],
+				Uploader: args[1],
+				Class:    args[0],
 			})
 			if err != nil {
 				return err
