@@ -83,7 +83,7 @@ func (k Keeper) distributeCost(ctx sdk.Context, class string, cost sdk.Coin) err
 	dataSet, _ := k.getDataByKey(ctx, types.DataSetKey, class)
 	totalDataAmount := uint64(len(dataSet.Urls))
 	for _, uploader := range uploaderSet.UploaderSet {
-		dataSet, _ := k.getDataByKey(ctx, class, uploader)
+		dataSet, _ := k.getDataByKey(ctx, uploader, class)
 		dataAmount := uint64(len(dataSet.Urls))
 		dataCost := dataAmount * rewardAmount / totalDataAmount
 		uploaderReward := sdk.Coin{
