@@ -10,6 +10,13 @@ func (p Params) Validate() error {
 	return err
 }
 
+func DefaultParams() Params {
+	return Params{
+		DataPrice:     sdk.NewInt64Coin("ujuno", 100),
+		FeePercentage: 0.1,
+	}
+}
+
 func validateDataPrice(i interface{}) error {
 	v, ok := i.(sdk.Coin)
 	if !ok {
