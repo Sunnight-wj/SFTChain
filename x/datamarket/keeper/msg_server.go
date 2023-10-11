@@ -21,7 +21,7 @@ func NewMsgServerImpl(keeper Keeper) types.MsgServer {
 func (server msgServer) UploadData(goCtx context.Context, msg *types.MsgUploadData) (*types.MsgUploadDataResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
-	err := server.Keeper.UploadData(ctx, msg.Class, msg.Uploader, msg.Url)
+	err := server.Keeper.UploadData(ctx, msg.Uploader, msg.Class, msg.Url)
 	if err != nil {
 		return nil, err
 	}

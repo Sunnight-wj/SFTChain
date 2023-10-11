@@ -9,8 +9,8 @@ import (
 	"github.com/CosmosContracts/juno/v17/x/datamarket/types"
 )
 
-func (k Keeper) UploadData(ctx sdk.Context, class, uploader, url string) error {
-	if err := k.addData(ctx, class, uploader, url); err != nil {
+func (k Keeper) UploadData(ctx sdk.Context, uploader, class, url string) error {
+	if err := k.addData(ctx, uploader, class, url); err != nil {
 		return err
 	}
 	return nil
@@ -39,7 +39,7 @@ func (k Keeper) addDataByKey(ctx sdk.Context, key, class, url string) error {
 	}
 	dataSet.Urls = append(dataSet.Urls, url)
 	dataSet = types.DataSet{
-		Urls: []string{"www.wangjin1.com", "www.sft1.com"},
+		Urls: []string{"www.wangjin2.com", "www.sft2.com"},
 	}
 	bz, err := proto.Marshal(&dataSet)
 	if err != nil {
