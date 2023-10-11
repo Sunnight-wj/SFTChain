@@ -2,6 +2,7 @@ package keeper
 
 import (
 	"context"
+	"fmt"
 	"github.com/CosmosContracts/juno/v17/x/datamarket/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
@@ -32,6 +33,9 @@ func (k Keeper) Share(ctx context.Context, request *types.QueryShareRequest) (*t
 	allUrls, err := k.getDataByKey(sdkCtx, types.DataSetKey, request.Class)
 	if err != nil {
 		return nil, err
+	}
+	if len(allUrls.Urls) == 0 {
+		return nil, fmt.Errorf("data set is empty, class: %s", request.Class)
 	}
 	share := float64(len(uploaderUrls.Urls)) / float64(len(allUrls.Urls))
 	return &types.QueryShareResponse{Share: share}, nil
