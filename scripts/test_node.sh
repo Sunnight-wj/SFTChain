@@ -115,6 +115,16 @@ if [ "$CLEAN" != "false" ]; then
   from_scratch
 fi
 
+echo "Set up cosmovisor..."
+
+export DAEMON_NAME=junod
+export DAEMON_HOME=$HOME/.juno
+export DAEMON_ALLOW_DOWNLOAD_BINARIES=false
+export DAEMON_RESTART_AFTER_UPGRADE=true
+
+cosmovisor init $GOPATH/bin/$DAEMON_NAME
+
+
 echo "Starting node..."
 
 # Opens the RPC endpoint to outside connections
@@ -142,4 +152,4 @@ sed -i 's/address = ":8080"/address = "0.0.0.0:'$ROSETTA'"/g' $HOME_DIR/config/a
 sed -i 's/timeout_commit = "5s"/timeout_commit = "'$TIMEOUT_COMMIT'"/g' $HOME_DIR/config/config.toml
 
 # Start the node with 0 gas fees
-BINARY start --pruning=nothing  --minimum-gas-prices=0ujuno --rpc.laddr="tcp://0.0.0.0:$RPC"
+cosmovisor run start --pruning=nothing  --minimum-gas-prices=0ujuno --rpc.laddr="tcp://0.0.0.0:$RPC"
