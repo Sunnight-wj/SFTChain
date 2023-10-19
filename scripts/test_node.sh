@@ -58,7 +58,7 @@ from_scratch () {
   update_test_genesis '.consensus_params["block"]["max_gas"]="100000000"'
   # Gov
   update_test_genesis '.app_state["gov"]["params"]["min_deposit"]=[{"denom": "ujuno","amount": "1000000"}]'
-  update_test_genesis '.app_state["gov"]["params"]["voting_period"]="1200s"'
+  update_test_genesis '.app_state["gov"]["params"]["voting_period"]="300s"'
   # staking
   update_test_genesis '.app_state["staking"]["params"]["bond_denom"]="ujuno"'  
   update_test_genesis '.app_state["staking"]["params"]["min_commission_rate"]="0.050000000000000000"'  
