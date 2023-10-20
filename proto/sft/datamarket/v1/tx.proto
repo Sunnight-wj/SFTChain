@@ -13,7 +13,14 @@ service Msg {
   rpc BuyData(MsgBuyData) returns (MsgBuyDataResponse);
   rpc MintTo(MsgMintTo) returns (MsgMintToResponse);
   rpc UpdateParams(MsgUpdateParams) returns (MsgUpdateParamsResponse);
+  rpc UpdateVipDiscount(MsgUpdateVipDiscount) returns (MsgUpdateVipDiscountResponse);
 }
+
+message  MsgUpdateVipDiscount {
+  double discount = 1 [ (gogoproto.moretags) = "yaml:\"discount\"" ];
+}
+
+message MsgUpdateVipDiscountResponse {}
 
 message MsgUploadData {
   string uploader = 1 [ (gogoproto.moretags) = "yaml:\"uploader\"" ];

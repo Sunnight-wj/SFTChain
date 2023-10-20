@@ -1,0 +1,11 @@
+syntax = "proto3";
+package sft.datamarket.v1;
+
+option go_package = "github.com/CosmosContracts/juno/x/datamarket/types";
+
+import "gogoproto/gogo.proto";
+
+message VipInfo {
+  repeated string vipList = 1 [ (gogoproto.moretags) = "yaml:\"vip_list\"" ];
+  double discount = 2 [ (gogoproto.moretags) = "yaml:\"discount\"" ];
+}

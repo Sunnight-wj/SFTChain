@@ -34,6 +34,9 @@ func (k Keeper) addData(ctx sdk.Context, uploader, class, url string) error {
 
 func (k Keeper) addDataByKey(ctx sdk.Context, key, class, url string) error {
 	dataSet, _ := k.getDataByKey(ctx, key, class)
+	if dataSet.Description == "" {
+		dataSet.Description = fmt.Sprintf("this data set belong to %s, and key is %s", class, key)
+	}
 	if goutil.Contains(dataSet.Urls, url) {
 		return fmt.Errorf("data: %s already exist in dataset: %s", url, class)
 	}

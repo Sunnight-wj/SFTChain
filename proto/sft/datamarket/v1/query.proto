@@ -5,6 +5,7 @@ import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "sft/datamarket/v1/genesis.proto";
 import "sft/datamarket/v1/data.proto";
+import "sft/datamarket/v1/vip.proto";
 
 option go_package = "github.com/CosmosContracts/juno/x/datamarket/types";
 
@@ -21,6 +22,19 @@ service Query {
   rpc DataSetFromBuyer(QueryDataSetFromBuyerRequest) returns (QueryDataSetFromBuyerResponse) {
     option (google.api.http).get = "/sft/datamarket/v1/data_set_from_buyer";
   }
+
+  rpc VipInfo(QueryVipInfoRequest) returns (QueryVipInfoResponse) {
+    option (google.api.http).get = "/sft/datamarket/v1/vip_info";
+  }
+}
+
+message QueryVipInfoRequest {}
+
+message QueryVipInfoResponse {
+  VipInfo vipInfo = 1 [
+    (gogoproto.moretags) = "yaml:\"vip_info\"",
+    (gogoproto.nullable) = false
+  ];
 }
 
 message QueryDataRequest {
