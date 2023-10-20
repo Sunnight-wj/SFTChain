@@ -7,7 +7,8 @@ import "gogoproto/gogo.proto";
 
 
 message DataSet {
-  repeated string urls = 1 [ (gogoproto.moretags) = "yaml:\"urls\"" ];
+  string description = 1 [ (gogoproto.moretags) = "yaml:\"urls\"" ];
+  repeated string urls = 2 [ (gogoproto.moretags) = "yaml:\"urls\"" ];
 }
 
 message Classes {
