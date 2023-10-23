@@ -48,3 +48,11 @@ func (k Keeper) DataSetFromBuyer(ctx context.Context, request *types.QueryDataSe
 
 	return &types.QueryDataSetFromBuyerResponse{Classes: dataSet}, nil
 }
+
+func (k Keeper) VipInfo(ctx context.Context, request *types.QueryVipInfoRequest) (*types.QueryVipInfoResponse, error) {
+	sdkCtx := sdk.UnwrapSDKContext(ctx)
+
+	vipInfo, _ := k.getVipInfo(sdkCtx)
+
+	return &types.QueryVipInfoResponse{VipInfo: vipInfo}, nil
+}

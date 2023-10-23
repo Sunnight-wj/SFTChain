@@ -10,4 +10,5 @@ const (
 	AttributeMintToSender  = "mint_to_sender"
 	AttributeMintToAmount  = "mint_to_amount"
 	AttributeMintToAddress = "mint_to_address"
+	AttributeVipDiscount   = "vip_discount"
 )

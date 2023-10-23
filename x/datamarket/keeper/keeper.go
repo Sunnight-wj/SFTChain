@@ -62,3 +62,8 @@ func (k Keeper) GetBuyerPrefixStore(ctx sdk.Context, buyer string) sdk.KVStore {
 	store := ctx.KVStore(k.storeKey)
 	return prefix.NewStore(store, types.GetBuyerPrefix(buyer))
 }
+
+func (k Keeper) GetVipInfoPrefixStore(ctx sdk.Context) sdk.KVStore {
+	store := ctx.KVStore(k.storeKey)
+	return prefix.NewStore(store, types.GetVipInfoPrefix())
+}

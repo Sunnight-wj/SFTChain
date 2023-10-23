@@ -18,6 +18,23 @@ func NewMsgServerImpl(keeper Keeper) types.MsgServer {
 	return &msgServer{Keeper: keeper}
 }
 
+func (server msgServer) UpdateVipDiscount(goCtx context.Context, msg *types.MsgUpdateVipDiscount) (*types.MsgUpdateVipDiscountResponse, error) {
+	ctx := sdk.UnwrapSDKContext(goCtx)
+
+	err := server.Keeper.UpdateVipDiscount(ctx, msg.Discount)
+	if err != nil {
+		return nil, err
+	}
+
+	ctx.EventManager().EmitEvents(sdk.Events{
+		sdk.NewEvent(
+			types.TypeMsgUpdateVipDiscount,
+			sdk.NewAttribute(types.AttributeVipDiscount, fmt.Sprintf("%f", msg.Discount)),
+		),
+	})
+	return &types.MsgUpdateVipDiscountResponse{}, nil
+}
+
 func (server msgServer) UploadData(goCtx context.Context, msg *types.MsgUploadData) (*types.MsgUploadDataResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
 

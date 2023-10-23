@@ -25,6 +25,7 @@ func GetQueryCmd() *cobra.Command {
 		GetCmdQueryData(),
 		GetCmdQueryShare(),
 		GetCmdQueryDataSetFromBuyer(),
+		GetCmdQueryVipInfo(),
 	)
 
 	return cmd
@@ -132,6 +133,33 @@ func GetCmdQueryDataSetFromBuyer() *cobra.Command {
 			res, err := queryClient.DataSetFromBuyer(cmd.Context(), &types.QueryDataSetFromBuyerRequest{
 				Buyer: args[0],
 			})
+			if err != nil {
+				return err
+			}
+
+			return clientCtx.PrintProto(res)
+		},
+	}
+
+	flags.AddQueryFlagsToCmd(cmd)
+
+	return cmd
+}
+
+// GetCmdQueryVipInfo returns the vip info
+func GetCmdQueryVipInfo() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:   "vip-info [flags]",
+		Short: "Get the vip info",
+		Args:  cobra.ExactArgs(0),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			clientCtx, err := client.GetClientQueryContext(cmd)
+			if err != nil {
+				return err
+			}
+			queryClient := types.NewQueryClient(clientCtx)
+
+			res, err := queryClient.VipInfo(cmd.Context(), &types.QueryVipInfoRequest{})
 			if err != nil {
 				return err
 			}

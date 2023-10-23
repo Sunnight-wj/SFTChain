@@ -30,6 +30,9 @@ func (k Keeper) addDataSetForBuyer(ctx sdk.Context, buyer, class string) error {
 		return fmt.Errorf("buyer already buy the class: %s", class)
 	}
 	dataSet.Classes = append(dataSet.Classes, class)
+	if len(dataSet.Classes) > 0 {
+		k.addVip(ctx, buyer)
+	}
 	bz, err := proto.Marshal(&dataSet)
 	if err != nil {
 		return err
@@ -52,7 +55,7 @@ func (k Keeper) getDataSetByBuyer(ctx sdk.Context, buyer string) (types.Classes,
 }
 
 func (k Keeper) chargeForBuyData(ctx sdk.Context, buyer, class string) error {
-	cost, err := k.calculateCost(ctx, class)
+	cost, err := k.calculateCost(ctx, class, buyer)
 	if err != nil {
 		return err
 	}
@@ -96,7 +99,7 @@ func (k Keeper) distributeCost(ctx sdk.Context, class string, cost sdk.Coin) err
 	return nil
 }
 
-func (k Keeper) calculateCost(ctx sdk.Context, class string) (sdk.Coin, error) {
+func (k Keeper) calculateCost(ctx sdk.Context, class, buyer string) (sdk.Coin, error) {
 	params := k.GetParams(ctx)
 	dataSet, _ := k.getDataByKey(ctx, types.DataSetKey, class)
 	if len(dataSet.Urls) == 0 {
@@ -104,6 +107,10 @@ func (k Keeper) calculateCost(ctx sdk.Context, class string) (sdk.Coin, error) {
 	}
 	dataAmount := int64(len(dataSet.Urls))
 	feeAmount := params.DataPrice.Amount.MulRaw(dataAmount)
+	vipInfo, _ := k.getVipInfo(ctx)
+	if goutil.Contains(vipInfo.VipList, buyer) {
+		feeAmount = math.NewInt(int64(float64(feeAmount.Uint64()) * vipInfo.Discount))
+	}
 	fee := sdk.Coin{
 		Denom:  params.DataPrice.Denom,
 		Amount: feeAmount,
@@ -126,4 +133,45 @@ func (k Keeper) MintTo(ctx sdk.Context, amount sdk.Coin, to string) error {
 		return fmt.Errorf("failed to mint to blocked address: %s", addr)
 	}
 	return k.bankKeeper.SendCoinsFromModuleToAccount(ctx, types.ModuleName, addr, sdk.NewCoins(amount))
+}
+
+func (k Keeper) UpdateVipDiscount(ctx sdk.Context, discount float64) error {
+	store := k.GetVipInfoPrefixStore(ctx)
+
+	vipInfo, _ := k.getVipInfo(ctx)
+	vipInfo.Discount = discount
+	bz, err := proto.Marshal(&vipInfo)
+	if err != nil {
+		return err
+	}
+	store.Set([]byte(types.VipInfoKey), bz)
+	return nil
+}
+
+func (k Keeper) addVip(ctx sdk.Context, addr string) error {
+	store := k.GetVipInfoPrefixStore(ctx)
+
+	vipInfo, _ := k.getVipInfo(ctx)
+	if goutil.Contains(vipInfo.VipList, addr) {
+		return nil
+	}
+	vipInfo.VipList = append(vipInfo.VipList, addr)
+	bz, err := proto.Marshal(&vipInfo)
+	if err != nil {
+		return err
+	}
+	store.Set([]byte(types.VipInfoKey), bz)
+	return nil
+}
+
+func (k Keeper) getVipInfo(ctx sdk.Context) (types.VipInfo, error) {
+	store := k.GetVipInfoPrefixStore(ctx)
+
+	bz := store.Get([]byte(types.VipInfoKey))
+	vipInfo := types.VipInfo{}
+	err := proto.Unmarshal(bz, &vipInfo)
+	if err != nil {
+		return types.VipInfo{}, err
+	}
+	return vipInfo, nil
 }

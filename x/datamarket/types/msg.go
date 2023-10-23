@@ -13,10 +13,11 @@ var (
 )
 
 const (
-	TypeMsgUploadData   = "upload_data"
-	TypeMsgBuyData      = "buy_data"
-	TypeMsgUpdateParams = "update_params"
-	TypeMsgMintTo       = "mint_to"
+	TypeMsgUploadData        = "upload_data"
+	TypeMsgBuyData           = "buy_data"
+	TypeMsgUpdateParams      = "update_params"
+	TypeMsgMintTo            = "mint_to"
+	TypeMsgUpdateVipDiscount = "update_vip_discount"
 )
 
 func NewMsgUploadData(
@@ -178,4 +179,36 @@ func (msg *MsgMintTo) GetSignBytes() []byte {
 func (msg MsgMintTo) GetSigners() []sdk.AccAddress {
 	from, _ := sdk.AccAddressFromBech32(msg.Sender)
 	return []sdk.AccAddress{from}
+}
+
+// NewMsgUpdateVipDiscount creates new instance of MsgUpdateParams
+func NewMsgUpdateVipDiscount(
+	discount float64,
+) *MsgUpdateVipDiscount {
+
+	return &MsgUpdateVipDiscount{
+		Discount: discount,
+	}
+}
+
+// Route returns the name of the module
+func (msg MsgUpdateVipDiscount) Route() string { return RouterKey }
+
+// Type returns the the action
+func (msg MsgUpdateVipDiscount) Type() string { return TypeMsgUpdateVipDiscount }
+
+// ValidateBasic runs stateless checks on the message
+func (msg MsgUpdateVipDiscount) ValidateBasic() error {
+
+	return nil
+}
+
+// GetSignBytes encodes the message for signing
+func (msg *MsgUpdateVipDiscount) GetSignBytes() []byte {
+	return sdk.MustSortJSON(AminoCdc.MustMarshalJSON(msg))
+}
+
+// GetSigners defines whose signature is required
+func (msg MsgUpdateVipDiscount) GetSigners() []sdk.AccAddress {
+	return nil
 }

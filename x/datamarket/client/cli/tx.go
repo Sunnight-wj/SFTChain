@@ -28,6 +28,7 @@ func GetTxCmd() *cobra.Command {
 		NewBuyData(),
 		NewUpdateParams(),
 		NewMintTo(),
+		NewUpdateVipDiscount(),
 	)
 	return txCmd
 }
@@ -167,6 +168,40 @@ func NewMintTo() *cobra.Command {
 				Sender:        sender.String(),
 				Amount:        amount,
 				MintToAddress: toAddr.String(),
+			}
+
+			if err := msg.ValidateBasic(); err != nil {
+				return err
+			}
+
+			return tx.GenerateOrBroadcastTxCLI(cliCtx, cmd.Flags(), msg)
+		},
+	}
+
+	flags.AddTxFlagsToCmd(cmd)
+	return cmd
+}
+
+func NewUpdateVipDiscount() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:   "update-vip-discount [discount] [flags]",
+		Short: "Update the VIP discount for buy data.",
+		Long:  "Update the VIP discount for buy data.",
+		Args:  cobra.ExactArgs(1),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			cliCtx, err := client.GetClientTxContext(cmd)
+			if err != nil {
+				return err
+			}
+
+			//sender := cliCtx.GetFromAddress()
+
+			discount, err := strconv.ParseFloat(args[0], 64)
+			if err != nil {
+				return err
+			}
+			msg := &types.MsgUpdateVipDiscount{
+				Discount: discount,
 			}
 
 			if err := msg.ValidateBasic(); err != nil {

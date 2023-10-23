@@ -23,8 +23,10 @@ var (
 	DataSetKey     = "dataset"
 	UploaderSetKey = "uploaderset"
 	BuyerKey       = "buyer"
+	VipInfoKey     = "vipinfo"
 	DataSetPrefix  = "dataset"
 	BuyerPrefix    = "buyer"
+	VipInfoPrefix  = "vipinfo"
 )
 
 func GetDataSetPrefix(class string) []byte {
@@ -33,4 +35,8 @@ func GetDataSetPrefix(class string) []byte {
 
 func GetBuyerPrefix(buyer string) []byte {
 	return []byte(strings.Join([]string{BuyerPrefix, buyer, ""}, KeySeparator))
+}
+
+func GetVipInfoPrefix() []byte {
+	return []byte(strings.Join([]string{VipInfoPrefix}, KeySeparator))
 }
