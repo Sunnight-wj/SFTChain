@@ -1,6 +1,7 @@
 package v18
 
 import (
+	"fmt"
 	"github.com/CosmosContracts/juno/v17/app/keepers"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
@@ -14,9 +15,19 @@ func CreateUpgradeHandler(
 	cfg module.Configurator,
 	keepers *keepers.AppKeepers,
 ) upgradetypes.UpgradeHandler {
-	return func(ctx sdk.Context, plan upgradetypes.Plan, fromVM module.VersionMap) (module.VersionMap, error) {
+	return func(ctx sdk.Context, plan upgradetypes.Plan, vm module.VersionMap) (module.VersionMap, error) {
+		logger := ctx.Logger().With("upgrade", UpgradeName)
+
+		// Run migrations
+		logger.Info(fmt.Sprintf("pre migrate version map: %v", vm))
+		versionMap, err := mm.RunMigrations(ctx, cfg, vm)
+		if err != nil {
+			return nil, err
+		}
+		logger.Info(fmt.Sprintf("post migrate version map: %v", versionMap))
+
 		registerJunoMetadata(ctx, keepers.BankKeeper)
-		return mm.RunMigrations(ctx, cfg, fromVM)
+		return vm, err
 	}
 }
 
