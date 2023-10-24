@@ -96,8 +96,8 @@ from_scratch () {
 	update_test_genesis '.app_state["builder"]["params"]["reserve_fee"]["amount"]="1000000"'
 
   # Allocate genesis accounts
-  BINARY genesis add-genesis-account $KEY 10000000ujuno,1000utest --keyring-backend $KEYRING
-  BINARY genesis add-genesis-account $KEY2 1000000ujuno,1000utest --keyring-backend $KEYRING
+  BINARY genesis add-genesis-account $KEY 99999999990000000ujuno,1000utest --keyring-backend $KEYRING
+  BINARY genesis add-genesis-account $KEY2 9999999999000000ujuno,1000utest --keyring-backend $KEYRING
   BINARY genesis add-genesis-account juno1see0htr47uapjvcvh0hu6385rp8lw3emu85lh5 100000000000ujuno --keyring-backend $KEYRING
 
   BINARY genesis gentx $KEY 1000000ujuno --keyring-backend $KEYRING --chain-id $CHAIN_ID
