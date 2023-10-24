@@ -26,9 +26,9 @@ func Migrate(
 		if err != nil {
 			return err
 		}
-		class := string(key)[len(types.DataSetKey)+1 : len(string(key))-1]
+		class := string(key)
 		newDataSet := types.DataSet{
-			Urls:        oldDataSet.Urls,
+			Urls:        []string{fmt.Sprintf("key: %s, value: %v", string(key), oldDataSet.String())},
 			Description: fmt.Sprintf("this data set belong to %s", class),
 		}
 		bz, err := cdc.Marshal(&newDataSet)
