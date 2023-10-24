@@ -1,0 +1,15 @@
+syntax = "proto3";
+package sft.hello.v1;
+
+import "gogoproto/gogo.proto";
+
+option go_package = "github.com/CosmosContracts/juno/x/hello/types";
+
+message GenesisState {
+  Params params = 1 [ (gogoproto.nullable) = false ];
+}
+
+message Params {
+  string name = 1 [ (gogoproto.moretags) = "yaml:\"name\"" ];
+  uint64 age = 2[(gogoproto.moretags) = "yaml:\"age\""];
+}

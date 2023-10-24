@@ -1,0 +1,18 @@
+syntax = "proto3";
+package sft.hello.v1;
+
+import "gogoproto/gogo.proto";
+import "sft/hello/v1/genesis.proto";
+
+option go_package = "github.com/CosmosContracts/juno/x/hello/types";
+
+service Msg {
+  rpc UpdateParams(MsgUpdateParams) returns (MsgUpdateParamsResponse);
+}
+
+message MsgUpdateParams {
+  string Authority = 1 [ (gogoproto.moretags) = "yaml:\"authority\"" ];
+  Params params = 2 [(gogoproto.nullable) = false];
+}
+
+message MsgUpdateParamsResponse{}

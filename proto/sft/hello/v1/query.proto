@@ -1,0 +1,20 @@
+syntax = "proto3";
+package sft.hello.v1;
+
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+import "sft/hello/v1/genesis.proto";
+
+option go_package = "github.com/CosmosContracts/juno/x/hello/types";
+
+service Query {
+  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+    option (google.api.http).get = "/sft/hello/v1/params";
+  }
+}
+
+message QueryParamsRequest {}
+
+message QueryParamsResponse {
+  Params params = 1 [ (gogoproto.nullable) = false ];
+}
