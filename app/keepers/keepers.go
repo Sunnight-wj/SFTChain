@@ -92,6 +92,8 @@ import (
 	"github.com/CosmosContracts/juno/v17/x/globalfee"
 	globalfeekeeper "github.com/CosmosContracts/juno/v17/x/globalfee/keeper"
 	globalfeetypes "github.com/CosmosContracts/juno/v17/x/globalfee/types"
+	hellokeeper "github.com/CosmosContracts/juno/v17/x/hello/keeper"
+	hellotypes "github.com/CosmosContracts/juno/v17/x/hello/types"
 	mintkeeper "github.com/CosmosContracts/juno/v17/x/mint/keeper"
 	minttypes "github.com/CosmosContracts/juno/v17/x/mint/types"
 	"github.com/CosmosContracts/juno/v17/x/tokenfactory/bindings"
@@ -127,6 +129,7 @@ var maccPerms = map[string][]string{
 	globalfee.ModuleName:           nil,
 	buildertypes.ModuleName:        nil,
 	datamarkettypes.ModuleName:     {authtypes.Minter, authtypes.Burner},
+	hellotypes.ModuleName:          nil,
 }
 
 type AppKeepers struct {
@@ -180,6 +183,7 @@ type AppKeepers struct {
 	scopedWasmKeeper   capabilitykeeper.ScopedKeeper
 	TokenFactoryKeeper tokenfactorykeeper.Keeper
 	DataMarketKeeper   datamarketkeeper.Keeper
+	HelloKeeper        hellokeeper.Keeper
 
 	DripKeeper dripkeeper.Keeper
 
@@ -479,6 +483,13 @@ func NewAppKeepers(
 		"juno1efd63aw40lxf3n4mhf7dzhjkr453axurv2zdzk",
 	)
 
+	// Create the Hello Keeper
+	appKeepers.HelloKeeper = hellokeeper.NewKeeper(
+		appCodec,
+		appKeepers.keys[hellotypes.StoreKey],
+		"juno1efd63aw40lxf3n4mhf7dzhjkr453axurv2zdzk",
+	)
+
 	// Create the Skip Builder Keeper
 	appKeepers.BuildKeeper = builderkeeper.NewKeeper(
 		appCodec,
@@ -677,6 +688,7 @@ func initParamsKeeper(appCodec codec.BinaryCodec, legacyAmino *codec.LegacyAmino
 	paramsKeeper.Subspace(feesharetypes.ModuleName)
 	paramsKeeper.Subspace(wasmtypes.ModuleName)
 	paramsKeeper.Subspace(datamarkettypes.ModuleName)
+	paramsKeeper.Subspace(hellotypes.ModuleName)
 
 	return paramsKeeper
 }

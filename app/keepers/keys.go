@@ -36,6 +36,7 @@ import (
 	driptypes "github.com/CosmosContracts/juno/v17/x/drip/types"
 	feesharetypes "github.com/CosmosContracts/juno/v17/x/feeshare/types"
 	globalfeetypes "github.com/CosmosContracts/juno/v17/x/globalfee/types"
+	hellotypes "github.com/CosmosContracts/juno/v17/x/hello/types"
 	minttypes "github.com/CosmosContracts/juno/v17/x/mint/types"
 	tokenfactorytypes "github.com/CosmosContracts/juno/v17/x/tokenfactory/types"
 )
@@ -61,6 +62,7 @@ func (appKeepers *AppKeepers) GenerateKeys() {
 		driptypes.StoreKey,
 		clocktypes.StoreKey,
 		datamarkettypes.StoreKey,
+		hellotypes.StoreKey,
 	)
 
 	appKeepers.tkeys = sdk.NewTransientStoreKeys(paramstypes.TStoreKey)

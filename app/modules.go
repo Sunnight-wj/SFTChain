@@ -69,6 +69,8 @@ import (
 	feeshare "github.com/CosmosContracts/juno/v17/x/feeshare"
 	feesharetypes "github.com/CosmosContracts/juno/v17/x/feeshare/types"
 	"github.com/CosmosContracts/juno/v17/x/globalfee"
+	"github.com/CosmosContracts/juno/v17/x/hello"
+	hellotypes "github.com/CosmosContracts/juno/v17/x/hello/types"
 	"github.com/CosmosContracts/juno/v17/x/mint"
 	minttypes "github.com/CosmosContracts/juno/v17/x/mint/types"
 	"github.com/CosmosContracts/juno/v17/x/tokenfactory"
@@ -114,6 +116,7 @@ var ModuleBasics = module.NewBasicManager(
 	packetforward.AppModuleBasic{},
 	clock.AppModuleBasic{},
 	datamarket.AppModuleBasic{},
+	hello.AppModuleBasic{},
 )
 
 func appModules(
@@ -161,6 +164,7 @@ func appModules(
 		drip.NewAppModule(app.AppKeepers.DripKeeper, app.AppKeepers.AccountKeeper),
 		clock.NewAppModule(appCodec, app.AppKeepers.ClockKeeper),
 		datamarket.NewAppModule(app.AppKeepers.DataMarketKeeper, app.AppKeepers.AccountKeeper, app.AppKeepers.BankKeeper),
+		hello.NewAppModule(app.AppKeepers.HelloKeeper),
 		// IBC modules
 		ibc_hooks.NewAppModule(app.AppKeepers.AccountKeeper),
 		icq.NewAppModule(app.AppKeepers.ICQKeeper),
@@ -238,6 +242,7 @@ func orderBeginBlockers() []string {
 		ibchookstypes.ModuleName,
 		clocktypes.ModuleName,
 		datamarkettypes.ModuleName,
+		hellotypes.ModuleName,
 	}
 }
 
@@ -277,6 +282,7 @@ func orderEndBlockers() []string {
 		ibchookstypes.ModuleName,
 		clocktypes.ModuleName,
 		datamarkettypes.ModuleName,
+		hellotypes.ModuleName,
 	}
 }
 
@@ -316,5 +322,6 @@ func orderInitBlockers() []string {
 		ibchookstypes.ModuleName,
 		clocktypes.ModuleName,
 		datamarkettypes.ModuleName,
+		hellotypes.ModuleName,
 	}
 }
