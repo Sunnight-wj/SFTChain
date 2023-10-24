@@ -24,6 +24,9 @@ var (
 	_ module.AppModuleBasic = AppModuleBasic{}
 )
 
+// ConsensusVersion defines the current x/datamarket module consensus version.
+const ConsensusVersion = 2
+
 // ----------------------------------------------------------------------------
 // AppModuleBasic
 // ----------------------------------------------------------------------------
@@ -145,6 +148,11 @@ func (am AppModule) InitGenesis(ctx sdk.Context, cdc codec.JSONCodec, gs json.Ra
 func (am AppModule) ExportGenesis(ctx sdk.Context, cdc codec.JSONCodec) json.RawMessage {
 	genState := am.keeper.ExportGenesis(ctx)
 	return cdc.MustMarshalJSON(genState)
+}
+
+// ConsensusVersion implements ConsensusVersion.
+func (AppModule) ConsensusVersion() uint64 {
+	return ConsensusVersion
 }
 
 // BeginBlock executes all ABCI BeginBlock logic respective to the datamarket module.
