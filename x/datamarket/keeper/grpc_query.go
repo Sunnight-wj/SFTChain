@@ -18,12 +18,12 @@ func (k Keeper) Data(ctx context.Context, request *types.QueryDataRequest) (*typ
 	sdkCtx := sdk.UnwrapSDKContext(ctx)
 
 	class := request.Class
-	urls, err := k.getDataByKey(sdkCtx, types.DataSetKey, class)
+	dataSet, err := k.getDataByKey(sdkCtx, types.DataSetKey, class)
 	if err != nil {
 		return nil, err
 	}
 
-	return &types.QueryDataResponse{DataSet: urls}, nil
+	return &types.QueryDataResponse{DataSet: dataSet}, nil
 }
 
 func (k Keeper) Share(ctx context.Context, request *types.QueryShareRequest) (*types.QueryShareResponse, error) {

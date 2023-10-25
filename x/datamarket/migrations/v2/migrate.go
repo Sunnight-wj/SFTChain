@@ -21,20 +21,14 @@ func Migrate(
 	for ; iterator.Valid(); iterator.Next() {
 		key := iterator.Key()
 		val := iterator.Value()
-		oldDataSet := v2types.DataSet{}
-		err := cdc.Unmarshal(val, &oldDataSet)
-		if err != nil {
-			return err
-		}
+		var oldDataSet v2types.DataSet
+		cdc.MustUnmarshal(val, &oldDataSet)
 		class := string(key)
 		newDataSet := types.DataSet{
-			Urls:        []string{fmt.Sprintf("key: %s, value: %v", string(key), oldDataSet.String())},
+			Urls:        oldDataSet.Urls,
 			Description: fmt.Sprintf("this data set belong to %s", class),
 		}
-		bz, err := cdc.Marshal(&newDataSet)
-		if err != nil {
-			return err
-		}
+		bz := cdc.MustMarshal(&newDataSet)
 		store.Set(key, bz)
 	}
 	return nil
